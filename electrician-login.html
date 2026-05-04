@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrician Login – PR WIRING</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.login-grid-bg {
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(245,197,24,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,197,24,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+.login-glow {
+  position: fixed; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,197,24,0.07) 0%, transparent 70%);
+  top: -200px; right: -100px; pointer-events: none;
+}
+.elec-login-wrap {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 100px 5% 60px; flex-direction: column; gap: 1.5rem;
+}
+.login-card {
+  background: var(--dark2); border: 1px solid rgba(245,197,24,0.15);
+  padding: 3rem; width: 100%; max-width: 480px; position: relative; z-index: 2;
+}
+.login-logo { text-align: center; margin-bottom: 2rem; }
+.login-logo a { font-family: 'Bebas Neue',sans-serif; font-size: 2.2rem; letter-spacing: 3px; color: var(--yellow); text-decoration: none; }
+.login-logo a span { color: var(--white); }
+.login-logo p { color: #555; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+.elec-badge {
+  background: rgba(245,197,24,0.06); border: 1px solid rgba(245,197,24,0.2);
+  padding: 1rem 1.5rem; text-align: center; margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 12px;
+}
+.elec-badge .bi { font-size: 2rem; }
+.elec-badge div { text-align: left; }
+.elec-badge span { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); }
+.elec-badge p { color: #666; font-size: 0.82rem; margin-top: 2px; }
+
+/* DASHBOARD */
+.elec-dashboard { display: none; }
+.elec-dashboard.show { display: block; }
+.dash-topbar {
+  background: var(--dark3); margin: -3rem -3rem 2rem; padding: 1.5rem;
+  border-bottom: 1px solid rgba(245,197,24,0.1);
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.dash-topbar h3 { font-family: 'Bebas Neue',sans-serif; font-size: 1.4rem; letter-spacing: 1px; }
+.dash-topbar p { color: #666; font-size: 0.8rem; }
+.badge-online { display: inline-flex; align-items: center; gap: 6px; background: rgba(76,175,80,0.12); color: #4CAF50; border: 1px solid rgba(76,175,80,0.25); padding: 4px 12px; font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+.badge-online::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #4CAF50; }
+
+.e-stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.8rem; margin-bottom: 1.5rem; }
+.e-stat { background: var(--dark3); padding: 1rem; text-align: center; }
+.e-stat .n { font-family: 'Bebas Neue',sans-serif; font-size: 2.2rem; color: var(--yellow); line-height: 1; }
+.e-stat .l { color: #555; font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 2px; }
+
+.dash-subtitle { font-family: 'Barlow Condensed',sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #555; margin: 1.5rem 0 0.8rem; }
+
+.job-card {
+  background: var(--dark3); border: 1px solid rgba(255,255,255,0.04);
+  padding: 1.2rem; margin-bottom: 0.7rem; transition: border-color 0.2s;
+}
+.job-card:hover { border-color: rgba(245,197,24,0.2); }
+.job-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem; }
+.job-top h5 { font-weight: 600; font-size: 0.95rem; }
+.job-type { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border: 1px solid; }
+.type-res { color: #4CAF50; border-color: rgba(76,175,80,0.3); background: rgba(76,175,80,0.08); }
+.type-com { color: var(--yellow); border-color: rgba(245,197,24,0.3); background: rgba(245,197,24,0.06); }
+.type-ind { color: var(--amber); border-color: rgba(255,149,0,0.3); background: rgba(255,149,0,0.06); }
+.job-meta { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+.job-meta span { color: #666; font-size: 0.8rem; display: flex; align-items: center; gap: 4px; }
+.job-actions { display: flex; gap: 0.6rem; margin-top: 0.8rem; }
+.btn-accept { background: #4CAF50; color: white; border: none; padding: 7px 16px; cursor: pointer; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; clip-path: polygon(5px 0%,100% 0%,calc(100% - 5px) 100%,0% 100%); transition: opacity 0.2s; }
+.btn-accept:hover { opacity: 0.85; }
+.btn-decline { background: transparent; color: #E63946; border: 1px solid rgba(230,57,70,0.3); padding: 7px 16px; cursor: pointer; font-size: 0.78rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; }
+.btn-decline:hover { background: rgba(230,57,70,0.08); }
+
+.earnings-row { background: var(--dark3); padding: 1.2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem; }
+.earnings-row .job-name { font-weight: 600; font-size: 0.92rem; }
+.earnings-row .job-date { color: #555; font-size: 0.78rem; }
+.earnings-row .amt { font-family: 'Bebas Neue',sans-serif; font-size: 1.5rem; color: var(--yellow); letter-spacing: 1px; }
+
+.logout-btn { width: 100%; background: transparent; border: 1px solid rgba(255,255,255,0.08); color: #555; padding: 11px; font-family: 'Barlow Condensed',sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; margin-top: 1.5rem; transition: all 0.2s; }
+.logout-btn:hover { border-color: rgba(245,197,24,0.2); color: var(--yellow); }
+
+.other-logins { position: relative; z-index: 2; text-align: center; max-width: 480px; width: 100%; }
+.other-logins p { color: #444; font-size: 0.82rem; margin-bottom: 0.8rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+.other-login-links { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+.other-login-links a { color: #555; text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 8px 16px; border: 1px solid rgba(255,255,255,0.06); transition: all 0.2s; }
+.other-login-links a:hover { border-color: rgba(245,197,24,0.3); color: var(--yellow); }
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">PR<span> WIRING</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="hire.html">Join Us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="customer-login.html">Customer Login</a></li>
+    <li><a href="contact.html" class="nav-cta">Get Quote</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="login-grid-bg"></div>
+<div class="login-glow"></div>
+
+<div class="elec-login-wrap">
+  <div class="login-card" id="elecCard">
+    <div class="login-logo" id="elecLogo">
+      <a href="index.html">PR<span> WIRING</span></a>
+      <p>Electrician Portal</p>
+    </div>
+
+    <div class="elec-badge" id="elecBadge">
+      <div class="bi">⚡</div>
+      <div>
+        <span>Team Member Access</span>
+        <p>Login to view jobs, track earnings & manage your work schedule.</p>
+      </div>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div id="elecLoginForm">
+      <div class="form-group">
+        <label>Registered Mobile Number</label>
+        <input type="tel" id="ePhone" placeholder="Your registered 10-digit number">
+      </div>
+      <div class="form-group">
+        <label>Password / PIN</label>
+        <input type="password" id="ePass" placeholder="Enter your password">
+      </div>
+      <button class="btn-submit" onclick="elecLogin()">Sign In ⚡</button>
+      <div style="text-align:center;margin-top:1.2rem;font-size:0.82rem;color:#444">
+        Not registered yet? <a href="hire.html" style="color:var(--yellow);font-weight:600">Apply to join our team</a>
+      </div>
+    </div>
+
+    <!-- ELECTRICIAN DASHBOARD -->
+    <div class="elec-dashboard" id="elecDash">
+      <div class="dash-topbar">
+        <div>
+          <h3>Ramesh — Electrician</h3>
+          <p>📍 Raipur • <span class="badge-online">Online</span></p>
+        </div>
+        <button class="dash-logout" style="background:none;border:1px solid rgba(245,197,24,0.2);color:var(--yellow);padding:6px 14px;cursor:pointer;font-size:0.78rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;" onclick="elecLogout()">Sign Out</button>
+      </div>
+
+      <div class="e-stat-row">
+        <div class="e-stat"><div class="n">4</div><div class="l">Active Jobs</div></div>
+        <div class="e-stat"><div class="n">18</div><div class="l">Completed</div></div>
+        <div class="e-stat"><div class="n">₹12K</div><div class="l">This Month</div></div>
+      </div>
+
+      <div class="dash-subtitle">Available Jobs Near You</div>
+
+      <div class="job-card">
+        <div class="job-top">
+          <h5>3BHK House Wiring — Tatibandh, Raipur</h5>
+          <span class="job-type type-res">Residential</span>
+        </div>
+        <div class="job-meta">
+          <span>📍 2.4 km away</span>
+          <span>📅 Start: 03 May</span>
+          <span>⏱️ ~5 Days</span>
+          <span>💰 ₹3,500</span>
+        </div>
+        <div class="job-actions">
+          <button class="btn-accept" onclick="acceptJob(this)">✓ Accept</button>
+          <button class="btn-decline" onclick="declineJob(this)">✗ Pass</button>
+        </div>
+      </div>
+
+      <div class="job-card">
+        <div class="job-top">
+          <h5>Office Wiring — Nehru Nagar, Bhilai</h5>
+          <span class="job-type type-com">Commercial</span>
+        </div>
+        <div class="job-meta">
+          <span>📍 8.1 km away</span>
+          <span>📅 Start: 05 May</span>
+          <span>⏱️ ~3 Days</span>
+          <span>💰 ₹2,800</span>
+        </div>
+        <div class="job-actions">
+          <button class="btn-accept" onclick="acceptJob(this)">✓ Accept</button>
+          <button class="btn-decline" onclick="declineJob(this)">✗ Pass</button>
+        </div>
+      </div>
+
+      <div class="job-card">
+        <div class="job-top">
+          <h5>Factory Panel — SIDC Industrial, Bhilai</h5>
+          <span class="job-type type-ind">Industrial</span>
+        </div>
+        <div class="job-meta">
+          <span>📍 11 km away</span>
+          <span>📅 Start: 07 May</span>
+          <span>⏱️ ~7 Days</span>
+          <span>💰 ₹6,000</span>
+        </div>
+        <div class="job-actions">
+          <button class="btn-accept" onclick="acceptJob(this)">✓ Accept</button>
+          <button class="btn-decline" onclick="declineJob(this)">✗ Pass</button>
+        </div>
+      </div>
+
+      <div class="dash-subtitle">Recent Earnings</div>
+      <div class="earnings-row"><div><div class="job-name">Apartment Wiring — Shankar Nagar</div><div class="job-date">Completed: 29 Apr 2026</div></div><div class="amt">₹4,200</div></div>
+      <div class="earnings-row"><div><div class="job-name">Shop Wiring — Supela, Bhilai</div><div class="job-date">Completed: 25 Apr 2026</div></div><div class="amt">₹2,100</div></div>
+      <div class="earnings-row"><div><div class="job-name">Fault Repair × 3 Homes</div><div class="job-date">Completed: 22 Apr 2026</div></div><div class="amt">₹1,800</div></div>
+
+      <button class="logout-btn" onclick="elecLogout()">Sign Out</button>
+    </div>
+  </div>
+
+  <div class="other-logins">
+    <p>Other Portals</p>
+    <div class="other-login-links">
+      <a href="customer-login.html">👤 Customer Login</a>
+      <a href="hire.html">📋 Apply to Join</a>
+      <a href="index.html">🏠 Home</a>
+    </div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+<script>
+function elecLogin() {
+  const ph = document.getElementById('ePhone').value.trim();
+  const pw = document.getElementById('ePass').value.trim();
+  if (!ph || !pw) {
+    if (!ph) document.getElementById('ePhone').style.borderColor = '#E63946';
+    if (!pw) document.getElementById('ePass').style.borderColor = '#E63946';
+    return;
+  }
+  document.getElementById('elecLoginForm').style.display = 'none';
+  document.getElementById('elecBadge').style.display = 'none';
+  document.getElementById('elecLogo').style.display = 'none';
+  document.getElementById('elecDash').classList.add('show');
+}
+function elecLogout() {
+  document.getElementById('elecLoginForm').style.display = '';
+  document.getElementById('elecBadge').style.display = '';
+  document.getElementById('elecLogo').style.display = '';
+  document.getElementById('elecDash').classList.remove('show');
+  document.getElementById('ePhone').value = '';
+  document.getElementById('ePass').value = '';
+}
+function acceptJob(btn) {
+  const card = btn.closest('.job-card');
+  const name = card.querySelector('h5').textContent;
+  card.style.borderColor = 'rgba(76,175,80,0.4)';
+  card.style.background = 'rgba(76,175,80,0.05)';
+  btn.textContent = '✓ Accepted!';
+  btn.style.background = '#388E3C';
+  btn.disabled = true;
+  card.querySelector('.btn-decline').style.display = 'none';
+}
+function declineJob(btn) {
+  const card = btn.closest('.job-card');
+  card.style.opacity = '0.4';
+  card.style.pointerEvents = 'none';
+  setTimeout(() => { card.remove(); }, 500);
+}
+</script>
+</body>
+</html>

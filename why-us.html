@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Choose Us – PR WIRING</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.why-main { background: var(--dark2); }
+.big-reasons { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
+.reason-card {
+  background: var(--dark3); padding: 2.5rem; position: relative; overflow: hidden;
+  border: 1px solid rgba(245,197,24,0.06); transition: border-color 0.3s, transform 0.3s;
+}
+.reason-card:hover { border-color: rgba(245,197,24,0.3); transform: translateY(-4px); }
+.reason-num {
+  position: absolute; top: 1.2rem; right: 1.5rem;
+  font-family: 'Bebas Neue',sans-serif; font-size: 5rem;
+  color: rgba(245,197,24,0.06); line-height: 1;
+}
+.reason-icon { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
+.reason-card h3 { font-family: 'Bebas Neue',sans-serif; font-size: 1.8rem; letter-spacing: 1px; color: var(--yellow); margin-bottom: 0.8rem; line-height: 1; }
+.reason-card p { color: #999; font-size: 0.95rem; line-height: 1.75; }
+
+.compare-section { background: var(--dark); }
+.compare-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; }
+.compare-table th, .compare-table td { padding: 1rem 1.5rem; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
+.compare-table th { font-family: 'Barlow Condensed',sans-serif; font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; background: var(--dark3); color: var(--gray); }
+.compare-table th.highlight { background: var(--yellow); color: var(--dark); }
+.compare-table td:first-child { text-align: left; color: #CCC; font-weight: 500; }
+.compare-table tr:hover td { background: rgba(245,197,24,0.02); }
+.compare-table .col-us { background: rgba(245,197,24,0.04); font-weight: 600; color: var(--yellow); }
+.tick { color: #4CAF50; font-size: 1.1rem; }
+.cross { color: #E63946; }
+.maybe { color: var(--amber); }
+
+.process-section { background: var(--dark3); }
+.process-steps { display: flex; flex-direction: column; gap: 0; margin-top: 3rem; position: relative; }
+.process-steps::before {
+  content: ''; position: absolute; left: 26px; top: 0; bottom: 0;
+  width: 2px; background: rgba(245,197,24,0.15);
+}
+.step {
+  display: flex; gap: 1.5rem; align-items: flex-start;
+  padding: 1.5rem 0; position: relative;
+}
+.step-num {
+  width: 52px; height: 52px; flex-shrink: 0;
+  background: var(--yellow); color: var(--dark);
+  font-family: 'Bebas Neue',sans-serif; font-size: 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+  clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+  position: relative; z-index: 1;
+}
+.step-content h4 { font-family: 'Barlow Condensed',sans-serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.4rem; }
+.step-content p { color: #888; font-size: 0.92rem; line-height: 1.7; }
+
+.guarantee-section { background: var(--dark2); }
+.guarantee-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1.2rem; margin-top: 2.5rem; }
+.guar-card {
+  padding: 2rem; background: var(--dark); border: 1px solid rgba(245,197,24,0.1);
+  text-align: center; transition: border-color 0.3s;
+}
+.guar-card:hover { border-color: rgba(245,197,24,0.35); }
+.guar-card .ic { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+.guar-card h4 { font-family: 'Barlow Condensed',sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--yellow); }
+.guar-card p { color: #777; font-size: 0.88rem; }
+
+@media(max-width:800px){
+  .big-reasons{grid-template-columns:1fr;}
+  .compare-table th, .compare-table td{padding:0.7rem 0.8rem; font-size:0.8rem;}
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">PR<span> WIRING</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="why-us.html" class="active">Why Us</a></li>
+    <li><a href="hire.html">Join Us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="customer-login.html">Login</a></li>
+    <li><a href="contact.html" class="nav-cta">Get Quote</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-bg"></div><div class="page-header-glow"></div>
+  <div class="page-header-content">
+    <div class="page-breadcrumb"><a href="index.html">Home</a> / Why Choose Us</div>
+    <h1 class="page-title">WHY <span>US?</span></h1>
+  </div>
+</div>
+
+<section class="why-main">
+  <div class="section-label reveal">Our Advantages</div>
+  <h2 class="section-title reveal">REASONS TO CHOOSE PR WIRING</h2>
+  <div class="big-reasons">
+    <div class="reason-card reveal"><span class="reason-num">01</span><span class="reason-icon">🎓</span><h3>ENGINEER-LED EXPERTISE</h3><p>Our founder and lead is a qualified Electrical Engineer — not just a contractor. Every project is overseen with professional engineering knowledge, ensuring correct design and execution.</p></div>
+    <div class="reason-card reveal"><span class="reason-num">02</span><span class="reason-icon">🛡️</span><h3>SAFETY IS NON-NEGOTIABLE</h3><p>We never cut corners on safety. All work is done following IS (Indian Standards) codes. Proper earthing, MCB protection, and quality materials are standard on every job.</p></div>
+    <div class="reason-card reveal"><span class="reason-num">03</span><span class="reason-icon">💰</span><h3>HONEST & AFFORDABLE PRICING</h3><p>No surprises, no hidden charges. We provide clear quotations before work begins and stick to them. Best quality at the most competitive rates in Raipur & Bhilai.</p></div>
+    <div class="reason-card reveal"><span class="reason-num">04</span><span class="reason-icon">⏰</span><h3>ON-TIME, EVERY TIME</h3><p>We understand that your time is valuable. PR WIRING has an excellent track record of completing projects on schedule — or ahead of it.</p></div>
+    <div class="reason-card reveal"><span class="reason-num">05</span><span class="reason-icon">🔧</span><h3>SKILLED TEAM</h3><p>Our electricians are trained, experienced, and regularly updated on modern techniques. Every team member is vetted and background-checked.</p></div>
+    <div class="reason-card reveal"><span class="reason-num">06</span><span class="reason-icon">📍</span><h3>LOCAL KNOWLEDGE</h3><p>We know Raipur & Bhilai — local regulations, suppliers, and conditions. This means faster project completion and better local support when you need it.</p></div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="compare-section">
+  <div class="section-label reveal">Side by Side</div>
+  <h2 class="section-title reveal">PR WIRING VS. OTHERS</h2>
+  <div style="overflow-x:auto" class="reveal">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th class="highlight">✅ PR WIRING</th>
+          <th>Other Contractors</th>
+          <th>Local Electricians</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Qualified Electrical Engineer</td><td class="col-us"><span class="tick">✓</span></td><td><span class="maybe">Sometimes</span></td><td><span class="cross">✗</span></td></tr>
+        <tr><td>Safety Standards (IS Code)</td><td class="col-us"><span class="tick">✓</span></td><td><span class="maybe">Varies</span></td><td><span class="maybe">Varies</span></td></tr>
+        <tr><td>Written Quotation</td><td class="col-us"><span class="tick">✓</span></td><td><span class="maybe">Sometimes</span></td><td><span class="cross">Rarely</span></td></tr>
+        <tr><td>On-Time Completion</td><td class="col-us"><span class="tick">✓</span></td><td><span class="maybe">Usually</span></td><td><span class="cross">Unpredictable</span></td></tr>
+        <tr><td>All Three Sectors (R/C/I)</td><td class="col-us"><span class="tick">✓</span></td><td><span class="maybe">Often 1-2</span></td><td><span class="cross">Usually 1</span></td></tr>
+        <tr><td>After-Service Support</td><td class="col-us"><span class="tick">✓</span></td><td><span class="maybe">Varies</span></td><td><span class="cross">Rare</span></td></tr>
+        <tr><td>Transparent Pricing</td><td class="col-us"><span class="tick">✓</span></td><td><span class="maybe">Varies</span></td><td><span class="cross">Often unclear</span></td></tr>
+        <tr><td>Local Raipur/Bhilai Presence</td><td class="col-us"><span class="tick">✓</span></td><td><span class="maybe">Some</span></td><td><span class="tick">✓</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="section-label reveal">How We Work</div>
+  <h2 class="section-title reveal">OUR PROCESS</h2>
+  <div class="process-steps reveal">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><h4>Contact & Enquiry</h4><p>Call us or send a message. Describe your requirement and location in Raipur/Bhilai.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><h4>Site Visit & Assessment</h4><p>Our engineer visits the site, assesses the work scope, and provides a detailed written quotation.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><h4>Quotation & Agreement</h4><p>You review the quote. We discuss, answer questions, and finalize the scope and timeline.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content"><h4>Work Execution</h4><p>Our skilled team executes the project with quality materials, following safety standards throughout.</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-content"><h4>Testing & Handover</h4><p>All work is tested before handover. We walk you through the installation and answer all questions.</p></div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-content"><h4>After-Service Support</h4><p>We stay available for any follow-up needs. Your satisfaction is our priority even after project completion.</p></div></div>
+  </div>
+</section>
+
+<!-- GUARANTEES -->
+<section class="guarantee-section">
+  <div class="section-label reveal">Our Commitment</div>
+  <h2 class="section-title reveal">OUR GUARANTEES</h2>
+  <div class="guarantee-grid">
+    <div class="guar-card reveal"><span class="ic">🔒</span><h4>Work Guarantee</h4><p>All electrical work is guaranteed. Any defect in our workmanship is fixed at no extra cost.</p></div>
+    <div class="guar-card reveal"><span class="ic">💎</span><h4>Quality Materials</h4><p>We use only ISI-marked, quality-certified electrical materials and branded components.</p></div>
+    <div class="guar-card reveal"><span class="ic">📞</span><h4>24hr Support</h4><p>Reach us after your project for any concerns. We pick up and respond.</p></div>
+    <div class="guar-card reveal"><span class="ic">💸</span><h4>No Hidden Charges</h4><p>The quoted price is the final price. No surprise add-ons after work is done.</p></div>
+  </div>
+  <div style="text-align:center;margin-top:3rem" class="reveal">
+    <a href="contact.html" class="btn-primary">Get Your Free Quote Today →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">PR WIRING<span>Your Vision, Our Success</span></div>
+    <nav class="footer-nav">
+      <a href="about.html">About</a><a href="services.html">Services</a>
+      <a href="projects.html">Projects</a><a href="hire.html">Join Us</a><a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-contact"><p>📞 <strong>7354283083</strong></p><p>📍 Raipur | Bhilai</p></div>
+  </div>
+  <div class="footer-bottom">All Rights Reserved © <strong>PR WIRING</strong> — Your Vision, Our Success</div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>

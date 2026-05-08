@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PR WIRING & ELECTROMECH | Raipur | Bhilai | Electrical & Mechanical Services</title>
+<meta name="description" content="PR WIRING & ELECTROMECH - Expert Electrical & Mechanical Services in Raipur, Bhilai, Durg. Residential, Commercial, Industrial. Call 7354283083">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════ DESIGN TOKENS */
+:root{
+  --E:#00CFFF; --D:#0066CC; --B:#000000;
+  --bg:#020810; --bg2:#040d1b; --bg3:#071424;
+  --card:#060f1f; --card2:#081628;
+  --brd:rgba(0,207,255,0.18); --brd2:rgba(0,207,255,0.08);
+  --txt:#ddeeff; --muted:#6b8faa; --dim:#3a5470;
+  --glow:0 0 24px rgba(0,207,255,0.35);
+  --glow2:0 0 50px rgba(0,207,255,0.18);
+  --f1:'Exo 2',sans-serif; --f2:'Orbitron',sans-serif; --f3:'JetBrains Mono',monospace;
+  --r:10px; --r2:16px;
+  --header:68px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--f1);overflow-x:hidden;min-height:100vh}
+
+/* SCANLINE TEXTURE */
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,207,255,0.01) 3px,rgba(0,207,255,0.01) 4px);pointer-events:none;z-index:9998}
+
+/* ═══════════════════ HEADER */
+header{position:fixed;top:0;left:0;right:0;height:var(--header);z-index:9000;
+  background:rgba(2,8,16,0.97);border-bottom:1px solid var(--brd);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.hdr{display:flex;align-items:center;justify-content:space-between;height:100%;max-width:1280px;margin:0 auto;padding:0 1.5rem}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;cursor:pointer}
+.brand-bolt{width:40px;height:40px;background:linear-gradient(135deg,#0088ff,#00CFFF);
+  border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--f2);font-weight:900;font-size:18px;color:#000;
+  box-shadow:var(--glow);flex-shrink:0;position:relative;overflow:hidden}
+.brand-bolt::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,0.2) 50%,transparent 60%);animation:sheen 3s ease infinite}
+@keyframes sheen{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
+.brand-name{font-family:var(--f2);font-size:0.82rem;font-weight:700;color:var(--E);letter-spacing:1.5px;line-height:1}
+.brand-sub{font-family:var(--f3);font-size:0.58rem;color:var(--muted);letter-spacing:3px;margin-top:3px;display:block}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{padding:7px 13px;font-family:var(--f1);font-weight:600;font-size:0.78rem;letter-spacing:0.8px;
+  text-transform:uppercase;color:var(--muted);text-decoration:none;border-radius:6px;
+  border:1px solid transparent;transition:all 0.22s;cursor:pointer}
+.nav a:hover,.nav a.on{color:var(--E);background:rgba(0,207,255,0.07);border-color:rgba(0,207,255,0.15)}
+.nav .nav-login{background:linear-gradient(135deg,#0055aa,#00CFFF);color:#000!important;
+  font-weight:700;border-color:transparent!important;margin-left:6px}
+.nav .nav-login:hover{opacity:0.9;transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:1px solid var(--brd);border-radius:6px}
+.ham span{width:22px;height:1.5px;background:var(--E);border-radius:2px;transition:0.3s}
+.mob-nav{display:none;position:fixed;top:var(--header);left:0;right:0;background:rgba(2,8,16,0.99);
+  border-bottom:1px solid var(--brd);flex-direction:column;z-index:8999;padding:0.5rem}
+.mob-nav a{display:block;padding:13px 1.5rem;color:var(--muted);font-family:var(--f1);
+  font-weight:600;font-size:0.85rem;letter-spacing:0.8px;text-transform:uppercase;
+  text-decoration:none;border-bottom:1px solid var(--brd2);cursor:pointer}
+.mob-nav a:hover{color:var(--E)}
+.mob-nav.open{display:flex}
+
+/* WHATSAPP STICKY */
+.wa{position:fixed;bottom:28px;right:28px;z-index:9997;width:58px;height:58px;
+  border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;
+  text-decoration:none;box-shadow:0 4px 24px rgba(37,211,102,0.55);transition:transform 0.2s}
+.wa:hover{transform:scale(1.1)}
+.wa svg{width:30px;height:30px;fill:#fff}
+.wa-pulse{position:absolute;inset:-4px;border-radius:50%;border:2px solid #25D366;
+  animation:wap 2s ease-out infinite}
+@keyframes wap{0%{opacity:0.9;transform:scale(1)}100%{opacity:0;transform:scale(1.7)}}
+
+/* TOAST */
+.toast{position:fixed;top:82px;right:20px;z-index:9996;
+  background:var(--card2);border:1px solid var(--E);border-radius:var(--r);
+  padding:11px 20px;font-family:var(--f1);font-size:0.88rem;color:var(--E);
+  box-shadow:var(--glow);opacity:0;transform:translateX(20px);
+  transition:all 0.3s;pointer-events:none;max-width:320px}
+.toast.show{opacity:1;transform:translateX(0)}
+
+/* ═══════════════════ PAGE SYSTEM */
+.page{display:none;padding-top:var(--header);min-height:100vh}
+.page.on{display:block}
+.wrap{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+
+/* SECTIONS */
+.sec{padding:80px 0}
+.sec-sm{padding:50px 0}
+.tag{font-family:var(--f3);font-size:0.68rem;letter-spacing:3px;color:var(--E);
+  text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.tag::before{content:'';width:20px;height:1px;background:var(--E)}
+h1.ttl{font-family:var(--f2);font-size:clamp(1.9rem,4.5vw,3.6rem);font-weight:900;
+  color:#fff;line-height:1.05;letter-spacing:-0.5px}
+h2.ttl{font-family:var(--f2);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;color:#fff;line-height:1.1}
+.accent{color:var(--E)}
+.sub{color:var(--muted);font-size:1rem;line-height:1.75;max-width:580px;margin-top:1rem}
+.divhr{height:1px;background:linear-gradient(90deg,transparent,var(--E),transparent);
+  opacity:0.25;margin:60px 0}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.g2a{display:grid;grid-template-columns:1.1fr 0.9fr;gap:3rem;align-items:start}
+
+/* CARD BASE */
+.card{background:var(--card);border:1px solid var(--brd2);border-radius:var(--r2);padding:1.5rem;transition:all 0.28s}
+.card:hover{border-color:var(--brd);box-shadow:var(--glow2)}
+.card-el{border:1px solid var(--brd);box-shadow:var(--glow)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:8px;
+  font-family:var(--f1);font-weight:700;font-size:0.85rem;letter-spacing:0.8px;
+  text-transform:uppercase;cursor:pointer;border:none;text-decoration:none;transition:all 0.25s}
+.btn-p{background:linear-gradient(135deg,#0044cc,#00CFFF);color:#000;box-shadow:var(--glow)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,207,255,0.5)}
+.btn-o{background:transparent;color:var(--E);border:1.5px solid var(--E)}
+.btn-o:hover{background:rgba(0,207,255,0.08)}
+.btn-g{background:rgba(0,207,255,0.06);color:var(--E);border:1px solid var(--brd)}
+.btn-g:hover{background:rgba(0,207,255,0.12);border-color:var(--E)}
+
+/* BADGE/PILL */
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-family:var(--f3);
+  font-size:0.65rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700}
+.badge-e{background:rgba(0,207,255,0.12);color:var(--E);border:1px solid rgba(0,207,255,0.25)}
+.badge-g{background:rgba(0,210,100,0.12);color:#00d264;border:1px solid rgba(0,210,100,0.25)}
+.badge-w{background:rgba(255,180,0,0.12);color:#ffb400;border:1px solid rgba(255,180,0,0.25)}
+
+/* ═══════════════════ HERO */
+.hero{min-height:calc(100vh - var(--header));display:flex;align-items:center;
+  position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 65% at 5% 50%,rgba(0,80,200,0.12) 0%,transparent 65%),
+  radial-gradient(ellipse 50% 40% at 95% 80%,rgba(0,207,255,0.06) 0%,transparent 55%),
+  radial-gradient(ellipse 40% 30% at 50% 10%,rgba(0,150,255,0.04) 0%,transparent 50%)}
+.hero-grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(0,207,255,0.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(0,207,255,0.04) 1px,transparent 1px);
+  background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 80% at 30% 50%,#000 30%,transparent 80%)}
+.hero-content{position:relative;z-index:2;width:100%;padding:3rem 0}
+.hero-live{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;
+  border:1px solid var(--brd);border-radius:20px;margin-bottom:2rem;
+  font-family:var(--f3);font-size:0.68rem;color:var(--E);letter-spacing:2px;background:rgba(0,207,255,0.05)}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:var(--E);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,207,255,0.6)}50%{opacity:0.7;box-shadow:0 0 0 6px rgba(0,207,255,0)}}
+.hero-desc{font-size:1.05rem;color:var(--muted);line-height:1.8;margin:1.5rem 0 2.5rem;max-width:550px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  background:rgba(0,207,255,0.04);border:1px solid var(--brd);border-radius:var(--r2);
+  overflow:hidden;max-width:680px}
+.stat{padding:1.4rem;border-right:1px solid var(--brd2);text-align:center}
+.stat:last-child{border-right:none}
+.stat-n{font-family:var(--f2);font-size:1.7rem;font-weight:900;color:var(--E);
+  text-shadow:0 0 20px rgba(0,207,255,0.4);display:block}
+.stat-l{font-family:var(--f3);font-size:0.62rem;color:var(--muted);letter-spacing:1.5px;margin-top:4px;display:block}
+
+/* HERO VISUAL */
+.hero-visual{position:absolute;right:-2%;top:50%;transform:translateY(-50%);
+  width:46%;pointer-events:none;z-index:1}
+.hv-svg{width:100%;opacity:0.12}
+
+/* FOUNDER BAND */
+.founder-band{background:var(--bg2);border-top:1px solid var(--brd2);border-bottom:1px solid var(--brd2);padding:50px 0}
+.founder-inner{display:flex;align-items:center;gap:3rem}
+.founder-avi{width:110px;height:110px;border-radius:50%;flex-shrink:0;
+  background:conic-gradient(from 180deg,#0066CC,#00CFFF,#0066CC);
+  padding:3px;box-shadow:var(--glow)}
+.founder-avi-inner{width:100%;height:100%;border-radius:50%;background:var(--bg2);
+  display:flex;align-items:center;justify-content:center;font-size:2.6rem}
+.founder-lbl{font-family:var(--f3);font-size:0.62rem;color:var(--E);letter-spacing:3px;margin-bottom:6px}
+.founder-nm{font-family:var(--f2);font-size:1.5rem;font-weight:700;color:#fff}
+.founder-rl{color:var(--muted);font-size:0.85rem;margin:3px 0 12px}
+.founder-q{font-size:0.96rem;color:var(--txt);line-height:1.8;
+  border-left:3px solid var(--E);padding-left:1.2rem;font-style:italic;max-width:680px}
+.creds{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.cred{padding:4px 12px;background:rgba(0,207,255,0.06);border:1px solid var(--brd2);
+  border-radius:20px;font-size:0.75rem;color:var(--muted)}
+
+/* SERVICE PREVIEW CARDS */
+.svc-prev{text-align:center;padding:2rem 1.5rem;cursor:pointer}
+.svc-prev .ico{width:64px;height:64px;border-radius:16px;margin:0 auto 1.2rem;
+  display:flex;align-items:center;justify-content:center;font-size:1.8rem;
+  background:linear-gradient(135deg,rgba(0,102,204,0.2),rgba(0,207,255,0.1));
+  border:1px solid var(--brd)}
+.svc-prev h3{font-family:var(--f2);font-size:0.95rem;color:#fff;margin-bottom:8px}
+.svc-prev p{font-size:0.82rem;color:var(--muted);line-height:1.6}
+
+/* WHY US */
+.why-item{display:flex;gap:1rem;align-items:flex-start}
+.why-ico{width:44px;height:44px;border-radius:10px;flex-shrink:0;
+  background:rgba(0,207,255,0.08);border:1px solid var(--brd2);
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.why-item h4{font-family:var(--f1);font-weight:700;color:#fff;font-size:0.9rem;margin-bottom:4px}
+.why-item p{font-size:0.82rem;color:var(--muted);line-height:1.5}
+
+/* ═══════════════════ ABOUT */
+.about-hero-sec{background:linear-gradient(180deg,rgba(0,80,200,0.08) 0%,transparent 100%);padding:70px 0 40px}
+.tl-wrap{padding-left:2rem;border-left:2px solid linear-gradient(180deg,var(--E),transparent);
+  position:relative}
+.tl-wrap::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--E) 0%,rgba(0,207,255,0.1) 100%)}
+.tl-item{position:relative;padding-left:2rem;margin-bottom:2rem}
+.tl-item::before{content:'';position:absolute;left:-2rem;top:7px;width:10px;height:10px;
+  border-radius:50%;background:var(--E);box-shadow:0 0 12px rgba(0,207,255,0.6);margin-left:-4px}
+.tl-yr{font-family:var(--f3);font-size:0.7rem;color:var(--E);margin-bottom:3px;letter-spacing:1px}
+.tl-ttl{font-family:var(--f1);font-weight:700;color:#fff;font-size:0.95rem}
+.tl-d{font-size:0.83rem;color:var(--muted);margin-top:4px;line-height:1.5}
+.team-card{text-align:center;padding:2rem 1.2rem}
+.team-av{width:70px;height:70px;border-radius:50%;margin:0 auto 1rem;
+  background:linear-gradient(135deg,var(--D),var(--E));
+  display:flex;align-items:center;justify-content:center;font-size:1.8rem}
+.team-role{font-family:var(--f3);font-size:0.62rem;color:var(--E);letter-spacing:2px;margin-bottom:5px}
+.team-nm{font-family:var(--f1);font-weight:700;color:#fff;font-size:0.95rem}
+.team-d{font-size:0.8rem;color:var(--muted);margin-top:5px;line-height:1.4}
+.val-chip{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;
+  border:1px solid var(--brd2);border-radius:20px;font-size:0.82rem;color:var(--txt);
+  background:var(--card);margin:3px;transition:0.2s}
+.val-chip:hover{border-color:var(--E);color:var(--E)}
+.msg-card{background:var(--card);border:1px solid var(--E);border-radius:var(--r2);
+  padding:1.8rem;box-shadow:var(--glow2)}
+
+/* ═══════════════════ SERVICE */
+.svc-tabs{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.st{padding:10px 20px;border-radius:8px;background:var(--card);border:1px solid var(--brd2);
+  color:var(--muted);font-family:var(--f1);font-weight:600;letter-spacing:0.8px;
+  cursor:pointer;transition:0.2s;font-size:0.82rem;text-transform:uppercase}
+.st.on,.st:hover{background:rgba(0,207,255,0.1);border-color:var(--E);color:var(--E)}
+.svc-pane{display:none}.svc-pane.on{display:block}
+.svc-item-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:2rem}
+.svc-item{display:flex;gap:14px;align-items:flex-start;background:var(--card);
+  border:1px solid var(--brd2);border-radius:var(--r);padding:1.1rem 1.3rem;transition:0.25s}
+.svc-item:hover{border-color:var(--brd)}
+.svc-item .ico{font-size:1.5rem;width:40px;text-align:center;flex-shrink:0;margin-top:2px}
+.svc-item h4{font-family:var(--f1);font-weight:700;color:#fff;font-size:0.9rem}
+.svc-item p{font-size:0.78rem;color:var(--muted);margin-top:2px;line-height:1.45}
+.price-g{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2.5rem}
+.price-card{background:var(--card);border:1px solid var(--brd2);border-radius:var(--r2);
+  padding:1.8rem 1.4rem;text-align:center;position:relative;transition:0.3s}
+.price-card:hover{border-color:var(--brd);transform:translateY(-3px)}
+.price-card.feat{border-color:var(--E);box-shadow:var(--glow2)}
+.pc-pop{position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,#0044aa,#00CFFF);color:#000;
+  padding:4px 16px;border-radius:12px;font-family:var(--f3);font-size:0.62rem;
+  font-weight:700;letter-spacing:1px;white-space:nowrap}
+.pc-plan{font-family:var(--f3);font-size:0.65rem;color:var(--E);letter-spacing:2px;margin-bottom:10px}
+.pc-range{font-family:var(--f2);font-size:1.5rem;font-weight:700;color:#fff}
+.pc-note{font-size:0.75rem;color:var(--muted);margin:4px 0 1.2rem}
+.pc-ft{list-style:none;text-align:left;margin-bottom:1.5rem}
+.pc-ft li{font-size:0.79rem;color:var(--muted);padding:4px 0;
+  display:flex;align-items:flex-start;gap:6px;line-height:1.4}
+.pc-ft li::before{content:'✓';color:var(--E);font-weight:700;flex-shrink:0;margin-top:1px}
+
+/* ═══════════════════ PROJECTS */
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2rem}
+.fb{padding:7px 18px;border-radius:20px;background:var(--card);
+  border:1px solid var(--brd2);color:var(--muted);font-family:var(--f1);
+  font-weight:600;cursor:pointer;transition:0.2s;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.5px}
+.fb.on,.fb:hover{background:rgba(0,207,255,0.1);border-color:var(--E);color:var(--E)}
+.proj-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.proj-card{background:var(--card);border:1px solid var(--brd2);border-radius:var(--r2);
+  overflow:hidden;cursor:pointer;transition:all 0.3s}
+.proj-card:hover{border-color:var(--E);transform:translateY(-4px);box-shadow:var(--glow2)}
+.proj-img{height:175px;background:linear-gradient(135deg,var(--bg3),rgba(0,80,180,0.25));
+  display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden}
+.proj-img::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 10px,rgba(0,207,255,0.03) 10px,rgba(0,207,255,0.03) 11px)}
+.proj-type{position:absolute;top:10px;right:10px}
+.proj-done{position:absolute;bottom:10px;left:10px}
+.proj-body{padding:1.2rem}
+.proj-ttl{font-family:var(--f1);font-weight:700;color:#fff;font-size:0.92rem;margin-bottom:6px}
+.proj-meta{display:flex;gap:12px;font-size:0.75rem;color:var(--muted);margin-bottom:8px}
+.proj-desc{font-size:0.8rem;color:var(--muted);line-height:1.5}
+
+/* REVIEWS */
+.rev-top{display:flex;align-items:center;gap:1.5rem;padding:1.5rem 2rem;
+  background:var(--card);border:1px solid var(--brd2);border-radius:var(--r2);margin-bottom:2rem}
+.rev-num{font-family:var(--f2);font-size:3.5rem;font-weight:900;color:#fff}
+.rev-stars{font-size:1.5rem;margin-bottom:3px}
+.rev-count{font-size:0.82rem;color:var(--muted)}
+.rev-card{background:var(--card);border:1px solid var(--brd2);border-radius:var(--r2);padding:1.4rem;transition:0.25s}
+.rev-card:hover{border-color:var(--brd)}
+.rev-stars-sm{color:#FFB800;font-size:0.9rem;margin-bottom:10px}
+.rev-txt{font-size:0.84rem;color:var(--txt);line-height:1.65;font-style:italic;margin-bottom:1rem}
+.rev-user{display:flex;align-items:center;gap:10px}
+.rev-av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--D),var(--E));
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;color:#000;flex-shrink:0}
+.rev-name{font-family:var(--f1);font-weight:700;color:#fff;font-size:0.85rem}
+.rev-loc{font-size:0.73rem;color:var(--muted)}
+
+/* GOOGLE MAP */
+.map-wrap{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);overflow:hidden;margin-top:2rem;box-shadow:var(--glow2)}
+.map-hdr{display:flex;align-items:center;gap:14px;padding:1.3rem 1.5rem;border-bottom:1px solid var(--brd2)}
+.map-hdr-ico{font-size:1.8rem}
+.map-hdr h3{font-family:var(--f2);font-weight:700;color:#fff;font-size:1rem}
+.map-hdr p{font-size:0.8rem;color:var(--muted);margin-top:2px}
+.map-iframe{width:100%;height:380px;border:none;display:block}
+.map-foot{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--brd2)}
+.map-ft-item{padding:1rem;text-align:center;border-right:1px solid var(--brd2)}
+.map-ft-item:last-child{border-right:none}
+.map-ft-item strong{display:block;font-family:var(--f2);font-size:0.85rem;color:var(--E)}
+.map-ft-item span{font-size:0.75rem;color:var(--muted);margin-top:2px;display:block}
+
+/* ═══════════════════ JOIN US */
+.pos-g{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.pos-card{background:var(--card);border:1px solid var(--brd2);border-radius:var(--r2);padding:1.5rem;transition:0.25s}
+.pos-card:hover{border-color:var(--E)}
+.pos-typ{font-family:var(--f3);font-size:0.62rem;color:var(--E);letter-spacing:2px;margin-bottom:5px}
+.pos-ttl{font-family:var(--f2);font-weight:700;color:#fff;font-size:1rem;margin-bottom:10px}
+.pos-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+.pos-tag{padding:3px 10px;background:rgba(0,207,255,0.07);border:1px solid rgba(0,207,255,0.18);
+  border-radius:12px;font-size:0.7rem;color:var(--E)}
+.pos-d{font-size:0.83rem;color:var(--muted);line-height:1.55}
+.steps-row{display:flex;gap:0;overflow-x:auto;margin:2rem 0;padding-bottom:0.5rem}
+.step{flex:1;min-width:120px;text-align:center;position:relative;padding:0 0.5rem}
+.step:not(:last-child)::after{content:'→';position:absolute;right:-8px;top:20px;
+  color:var(--E);font-size:1.1rem}
+.step-n{width:44px;height:44px;border-radius:50%;border:2px solid var(--E);
+  background:rgba(0,207,255,0.08);display:flex;align-items:center;justify-content:center;
+  font-family:var(--f3);color:var(--E);font-weight:700;margin:0 auto 8px;font-size:0.9rem}
+.step-ttl{font-family:var(--f1);font-weight:700;color:#fff;font-size:0.83rem}
+.step-d{font-size:0.72rem;color:var(--muted);margin-top:3px}
+.ben-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:3rem}
+.ben{display:flex;gap:12px;align-items:flex-start;background:var(--card);
+  border:1px solid var(--brd2);border-radius:var(--r);padding:1.1rem;transition:0.25s}
+.ben:hover{border-color:var(--brd)}
+.ben-ico{font-size:1.4rem;flex-shrink:0}
+.ben h4{font-family:var(--f1);font-weight:700;color:#fff;font-size:0.85rem}
+.ben p{font-size:0.78rem;color:var(--muted);margin-top:3px;line-height:1.45}
+
+/* FORMS */
+.fg{margin-bottom:1.2rem}
+.fg.half{flex:1;min-width:180px}
+.frow{display:flex;gap:1rem;flex-wrap:wrap}
+label{display:block;font-family:var(--f3);font-size:0.65rem;color:var(--muted);
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+input,select,textarea{width:100%;background:rgba(0,207,255,0.04);border:1px solid var(--brd2);
+  border-radius:8px;padding:11px 14px;color:var(--txt);font-family:var(--f1);
+  font-size:0.9rem;outline:none;transition:0.22s;-webkit-appearance:none;appearance:none}
+input:focus,select:focus,textarea:focus{border-color:var(--E);background:rgba(0,207,255,0.07);
+  box-shadow:0 0 0 3px rgba(0,207,255,0.1)}
+select option{background:var(--bg2)}
+textarea{resize:vertical;min-height:90px}
+.form-box{background:var(--card);border:1px solid var(--brd2);border-radius:var(--r2);padding:2rem}
+
+/* ═══════════════════ CONTACT */
+.ci-g{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:3rem}
+.ci{background:var(--card);border:1px solid var(--brd2);border-radius:var(--r2);
+  padding:1.5rem;text-align:center;transition:0.25s}
+.ci:hover{border-color:var(--E);transform:translateY(-2px)}
+.ci-ico{font-size:2.2rem;margin-bottom:10px}
+.ci-lbl{font-family:var(--f3);font-size:0.62rem;color:var(--E);letter-spacing:2px;margin-bottom:5px}
+.ci-val{font-family:var(--f2);font-size:0.9rem;color:#fff;font-weight:700}
+.ci-sub{font-size:0.75rem;color:var(--muted);margin-top:3px}
+.faq-item{border-bottom:1px solid var(--brd2);padding:1.1rem 0;cursor:pointer}
+.faq-q{font-family:var(--f1);font-weight:600;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:0.9rem}
+.faq-tog{font-size:1.2rem;color:var(--E);flex-shrink:0;transition:0.2s}
+.faq-a{font-size:0.83rem;color:var(--muted);line-height:1.65;margin-top:10px;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q{color:var(--E)}
+.faq-item.open .faq-tog{transform:rotate(45deg)}
+.areas{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.area{padding:5px 13px;background:var(--card);border:1px solid var(--brd2);
+  border-radius:20px;font-size:0.78rem;color:var(--txt)}
+
+/* ═══════════════════ LOGIN */
+.login-wrap{min-height:calc(100vh - var(--header));display:flex;align-items:center;
+  justify-content:center;padding:2rem;
+  background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(0,80,200,0.06) 0%,transparent 70%)}
+.login-box{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);
+  padding:2.5rem;width:100%;max-width:440px;box-shadow:var(--glow2)}
+.ltabs{display:flex;border:1px solid var(--brd2);border-radius:8px;overflow:hidden;margin-bottom:2rem}
+.ltab{flex:1;padding:11px;text-align:center;cursor:pointer;font-family:var(--f1);
+  font-weight:700;letter-spacing:0.5px;text-transform:uppercase;font-size:0.82rem;
+  transition:0.2s;color:var(--muted)}
+.ltab.on{background:rgba(0,207,255,0.1);color:var(--E)}
+.lform{display:none}.lform.on{display:block}
+
+/* ═══════════════════ DASHBOARD */
+.dash-wrap{min-height:calc(100vh - var(--header));display:grid;grid-template-columns:240px 1fr}
+.dash-side{background:var(--bg2);border-right:1px solid var(--brd2);padding:1.5rem 0;
+  display:flex;flex-direction:column}
+.dash-logo{padding:0 1.5rem 1.5rem;border-bottom:1px solid var(--brd2)}
+.dash-lname{font-family:var(--f2);color:var(--E);font-size:0.85rem;font-weight:700}
+.dash-lsub{font-family:var(--f3);font-size:0.6rem;color:var(--muted);margin-top:2px}
+.dash-nav{margin-top:1rem;flex:1}
+.dash-nav a{display:flex;align-items:center;gap:10px;padding:10px 1.5rem;
+  color:var(--muted);text-decoration:none;font-family:var(--f1);font-weight:600;
+  font-size:0.82rem;text-transform:uppercase;letter-spacing:0.5px;transition:0.2s;cursor:pointer}
+.dash-nav a:hover,.dash-nav a.on{color:var(--E);background:rgba(0,207,255,0.06);
+  border-right:2px solid var(--E)}
+.dash-main{padding:2rem;overflow-y:auto}
+.dash-hdr{margin-bottom:2rem}
+.dash-hdr h2{font-family:var(--f2);font-size:1.5rem;font-weight:700;color:#fff}
+.dash-hdr p{color:var(--muted);font-size:0.85rem;margin-top:4px}
+.kpi-g{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem}
+.kpi{background:var(--card);border:1px solid var(--brd2);border-radius:var(--r2);padding:1.4rem;transition:0.25s}
+.kpi:hover{border-color:var(--brd)}
+.kpi-n{font-family:var(--f3);font-size:1.8rem;color:var(--E);font-weight:700;display:block}
+.kpi-l{font-size:0.76rem;color:var(--muted);margin-top:5px}
+.kpi-ch{font-size:0.72rem;color:#00d264;margin-top:3px}
+.tbl-box{background:var(--card);border:1px solid var(--brd2);border-radius:var(--r2);overflow:hidden}
+.tbl-hdr{padding:1rem 1.5rem;border-bottom:1px solid var(--brd2);
+  display:flex;justify-content:space-between;align-items:center}
+.tbl-hdr h3{font-family:var(--f2);font-size:0.9rem;color:#fff;font-weight:700}
+table{width:100%;border-collapse:collapse}
+th{padding:10px 14px;font-family:var(--f3);font-size:0.62rem;color:var(--E);
+  letter-spacing:1.5px;background:rgba(0,207,255,0.04);border-bottom:1px solid var(--brd2);text-align:left}
+td{padding:11px 14px;font-size:0.82rem;color:var(--muted);border-bottom:1px solid rgba(0,207,255,0.04)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(0,207,255,0.02);color:var(--txt)}
+.sp{padding:3px 10px;border-radius:12px;font-family:var(--f3);font-size:0.62rem;font-weight:700;letter-spacing:0.5px}
+.sp-d{background:rgba(0,210,100,0.12);color:#00d264;border:1px solid rgba(0,210,100,0.25)}
+.sp-p{background:rgba(0,207,255,0.12);color:var(--E);border:1px solid rgba(0,207,255,0.25)}
+.sp-w{background:rgba(255,180,0,0.12);color:#ffb400;border:1px solid rgba(255,180,0,0.25)}
+.act-btns{display:flex;gap:5px}
+.act-btn{padding:4px 12px;border-radius:5px;font-size:0.72rem;font-family:var(--f1);
+  font-weight:700;cursor:pointer;border:none;transition:0.2s;letter-spacing:0.3px}
+.act-acc{background:rgba(0,210,100,0.15);color:#00d264;border:1px solid rgba(0,210,100,0.3)}
+.act-rej{background:rgba(255,60,60,0.15);color:#ff4444;border:1px solid rgba(255,60,60,0.3)}
+.act-st{background:rgba(0,207,255,0.15);color:var(--E);border:1px solid rgba(0,207,255,0.3)}
+
+/* ═══════════════════ FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2rem;text-align:center}
+.ft-main{font-family:var(--f1);font-size:0.9rem;color:var(--muted)}
+.ft-main strong{color:var(--E)}
+.ft-links{display:flex;justify-content:center;gap:1rem;margin-top:8px;flex-wrap:wrap}
+.ft-links a{font-size:0.78rem;color:var(--dim);text-decoration:none;cursor:pointer}
+.ft-links a:hover{color:var(--E)}
+
+/* MODAL */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);
+  z-index:9500;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
+.modal.open{display:flex}
+.modal-box{background:var(--card2);border:1px solid var(--brd);border-radius:var(--r2);
+  width:100%;max-width:660px;max-height:88vh;overflow-y:auto;box-shadow:var(--glow)}
+.modal-hdr{padding:1.3rem 1.5rem;border-bottom:1px solid var(--brd2);
+  display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--card2)}
+.modal-hdr h3{font-family:var(--f2);color:#fff;font-size:1rem;font-weight:700}
+.modal-cl{background:transparent;border:1px solid var(--brd2);color:var(--muted);
+  width:32px;height:32px;border-radius:6px;cursor:pointer;font-size:1rem;transition:0.2s}
+.modal-cl:hover{border-color:var(--E);color:var(--E)}
+.modal-body{padding:1.5rem}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.g4,.price-g{grid-template-columns:repeat(2,1fr)}.kpi-g{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){
+  .nav{display:none}.ham{display:flex}
+  .proj-g{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr 1fr}
+  .hero-visual{display:none}
+  .ci-g{grid-template-columns:repeat(2,1fr)}
+  .g2a,.g2{grid-template-columns:1fr}
+  .dash-wrap{grid-template-columns:1fr}.dash-side{display:none}
+  .pos-g,.ben-g{grid-template-columns:1fr}
+  .founder-inner{flex-direction:column}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:none}.stat:nth-child(3){border-top:1px solid var(--brd2)}
+  .svc-item-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .proj-g{grid-template-columns:1fr}.g3{grid-template-columns:1fr}
+  .price-g,.g4,.kpi-g{grid-template-columns:1fr}
+  .ci-g{grid-template-columns:1fr 1fr}
+  h1.ttl{font-size:1.8rem}
+  .steps-row{flex-wrap:wrap}.step:not(:last-child)::after{display:none}
+  .stats-bar{grid-template-columns:repeat(2,1fr)}
+  .map-foot{grid-template-columns:1fr}.map-ft-item{border-right:none;border-bottom:1px solid var(--brd2)}
+  .map-ft-item:last-child{border-bottom:none}
+}
+</style>
+</head>
+<body>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/917354283083?text=Hi%20PR%20Wiring%2C%20I%20need%20electrical%20services" class="wa" target="_blank" aria-label="WhatsApp">
+  <div class="wa-pulse"></div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header>
+  <div class="hdr">
+    <div class="brand" onclick="go('home')">
+      <img src="data:image/png;base64,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" alt="PR Wiring Logo" style="width:46px;height:46px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(0,207,255,0.6));border-radius:6px;">
+      <div>
+        <div class="brand-name">PR WIRING</div>
+        <span class="brand-sub">& ELECTROMECH — RAIPUR</span>
+      </div>
+    </div>
+    <nav class="nav">
+      <a onclick="go('home')" id="n-home" class="on">Home</a>
+      <a onclick="go('about')" id="n-about">About</a>
+      <a onclick="go('service')" id="n-service">Service</a>
+      <a onclick="go('projects')" id="n-projects">Projects</a>
+      <a onclick="go('joinus')" id="n-joinus">Join Us</a>
+      <a onclick="go('contact')" id="n-contact">Contact</a>
+      <a onclick="go('login')" id="n-login" class="nav-login">Login</a>
+    </nav>
+    <div class="ham" onclick="toggleMob()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+<div class="mob-nav" id="mobNav">
+  <a onclick="go('home');toggleMob()">Home</a>
+  <a onclick="go('about');toggleMob()">About</a>
+  <a onclick="go('service');toggleMob()">Service</a>
+  <a onclick="go('projects');toggleMob()">Projects</a>
+  <a onclick="go('joinus');toggleMob()">Join Us</a>
+  <a onclick="go('contact');toggleMob()">Contact</a>
+  <a onclick="go('login');toggleMob()">Login</a>
+</div>
+
+<!-- ════════════════════════════════════════════ HOME ════════ -->
+<div class="page on" id="p-home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-visual">
+      <svg class="hv-svg" viewBox="0 0 600 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="80" y="60" width="440" height="380" rx="4" stroke="#00CFFF" stroke-width="1.5"/>
+        <rect x="100" y="80" width="200" height="130" rx="3" stroke="#00CFFF" stroke-width="1"/>
+        <rect x="320" y="80" width="180" height="80" rx="3" stroke="#00CFFF" stroke-width="1"/>
+        <circle cx="180" cy="260" r="60" stroke="#00CFFF" stroke-width="1.5"/>
+        <circle cx="180" cy="260" r="40" stroke="#00CFFF" stroke-width="1"/>
+        <line x1="320" y1="240" x2="460" y2="240" stroke="#00CFFF" stroke-width="1"/>
+        <line x1="320" y1="270" x2="460" y2="270" stroke="#00CFFF" stroke-width="1"/>
+        <line x1="320" y1="300" x2="420" y2="300" stroke="#00CFFF" stroke-width="1"/>
+        <line x1="320" y1="330" x2="440" y2="330" stroke="#00CFFF" stroke-width="1"/>
+        <rect x="100" y="360" width="360" height="60" rx="3" stroke="#0066CC" stroke-width="1.5"/>
+        <line x1="150" y1="390" x2="420" y2="390" stroke="#0066CC" stroke-width="1" stroke-dasharray="4,4"/>
+        <path d="M300 30 L315 55 L285 55 Z" fill="#00CFFF" opacity="0.6"/>
+        <circle cx="300" cy="30" r="4" fill="#00CFFF"/>
+      </svg>
+    </div>
+    <div class="wrap hero-content">
+      <div class="hero-live"><div class="hero-dot"></div>LICENSED ELECTRICAL ENGINEERS — RAIPUR, CG</div>
+      <h1 class="ttl">Expert <span class="accent">Electrical &</span><br>Electromechanical<br><span class="accent">Solutions</span></h1>
+      <p class="hero-desc">PR WIRING & ELECTROMECH — Your complete engineer-led partner for Residential, Commercial & Industrial electrical and mechanical projects. Quality guaranteed. Safety first. On time, every time.</p>
+      <div class="hero-btns">
+        <button class="btn btn-p" onclick="go('service')">⚡ Explore Services</button>
+        <button class="btn btn-o" onclick="go('contact')">📋 Get Free Quote</button>
+      </div>
+      <div class="stats-bar">
+        <div class="stat"><span class="stat-n" data-t="500">0</span><span class="stat-l">TOTAL PROJECTS</span></div>
+        <div class="stat"><span class="stat-n" data-t="300">0</span><span class="stat-l">HOMES WIRED</span></div>
+        <div class="stat"><span class="stat-n" data-t="150">0</span><span class="stat-l">COMMERCIAL</span></div>
+        <div class="stat"><span class="stat-n" data-t="50">0</span><span class="stat-l">INDUSTRIAL</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <div class="founder-band">
+    <div class="wrap">
+      <div class="founder-inner">
+        <div class="founder-avi"><div class="founder-avi-inner">👷</div></div>
+        <div style="flex:1">
+          <div class="founder-lbl">FOUNDER & LEAD ENGINEER</div>
+          <div class="founder-nm">Pramod Rajput</div>
+          <div class="founder-rl">B.E. Electrical Engineering &nbsp;•&nbsp; 10+ Years Experience &nbsp;•&nbsp; CG Licensed Contractor</div>
+          <div class="founder-q">"PR WIRING & ELECTROMECH was built on one principle — deliver technically superior, honest electrical and mechanical work every single time. Every project, big or small, gets the same engineer-grade precision. Your building's safety carries my name — and that's my guarantee."</div>
+          <div class="creds">
+            <span class="cred">📜 B.E. Electrical</span>
+            <span class="cred">✅ CG Licensed Contractor</span>
+            <span class="cred">🏆 10+ Yrs Experience</span>
+            <span class="cred">📍 Raipur, CG</span>
+            <span class="cred">500+ Projects</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES PREVIEW -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="tag">What We Do</div>
+      <h2 class="ttl">Complete <span class="accent">Electrical & Mechanical</span> Services</h2>
+      <p class="sub">One engineer-led company, all electrical & electromechanical needs — from single rooms to industrial plants.</p>
+      <div class="g4" style="margin-top:2.5rem">
+        <div class="card svc-prev" onclick="go('service')">
+          <div class="ico">🏠</div>
+          <h3>Residential</h3>
+          <p>Complete house wiring, panels, fans, earthing & maintenance for new & existing homes.</p>
+        </div>
+        <div class="card svc-prev" onclick="go('service')">
+          <div class="ico">🏢</div>
+          <h3>Commercial</h3>
+          <p>Offices, shops, malls — power distribution, lighting, CCTV wiring & fire alarm systems.</p>
+        </div>
+        <div class="card svc-prev" onclick="go('service')">
+          <div class="ico">🏭</div>
+          <h3>Industrial</h3>
+          <p>Factory panels, motor wiring, VFD, PLC wiring, HT/LT systems & industrial AMC.</p>
+        </div>
+        <div class="card svc-prev" onclick="go('service')">
+          <div class="ico">⚙️</div>
+          <h3>Electromechanical</h3>
+          <p>Motors, pumps, generators, compressors, HVAC — integrated electrical + mechanical systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="tag">Why PR Wiring</div>
+      <h2 class="ttl">Engineer-Led. <span class="accent">Trusted. Proven.</span></h2>
+      <div class="g3" style="margin-top:2rem">
+        <div class="card why-item" style="gap:1rem;padding:1.5rem">
+          <div class="why-ico">🎓</div>
+          <div><h4>Engineer-Led Work</h4><p>Every project supervised by a qualified electrical engineer. Real expertise, not just labour.</p></div>
+        </div>
+        <div class="card why-item" style="gap:1rem;padding:1.5rem">
+          <div class="why-ico">🛡️</div>
+          <div><h4>IS/IEC Safety Compliance</h4><p>IS 732 wiring, IS 3043 earthing, RCCB protection — your safety is non-negotiable.</p></div>
+        </div>
+        <div class="card why-item" style="gap:1rem;padding:1.5rem">
+          <div class="why-ico">⏱️</div>
+          <div><h4>On-Time Delivery</h4><p>Clear timelines set upfront. Work planned, executed, and handed over on schedule — always.</p></div>
+        </div>
+        <div class="card why-item" style="gap:1rem;padding:1.5rem">
+          <div class="why-ico">🔧</div>
+          <div><h4>AMC Support Available</h4><p>Annual Maintenance Contracts for homes, offices & industries. Preventive + breakdown support.</p></div>
+        </div>
+        <div class="card why-item" style="gap:1rem;padding:1.5rem">
+          <div class="why-ico">📍</div>
+          <div><h4>Deep Local Roots</h4><p>Raipur & Bhilai experts. We know local codes, contractors & Chhattisgarh inspection norms.</p></div>
+        </div>
+        <div class="card why-item" style="gap:1rem;padding:1.5rem">
+          <div class="why-ico">💰</div>
+          <div><h4>Transparent Pricing</h4><p>Written quotes, itemized billing, no hidden charges. Complete cost clarity before work starts.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="ft-main"><strong>PR WIRING & ELECTROMECH</strong> — Your Vision, Our Success &nbsp;|&nbsp; 📞 <a href="tel:7354283083" style="color:var(--E);text-decoration:none">7354283083</a> &nbsp;|&nbsp; 📍 Raipur &nbsp;|&nbsp; Bhilai</div>
+    <div class="ft-links">
+      <a onclick="go('home')">Home</a><a onclick="go('about')">About</a><a onclick="go('service')">Services</a>
+      <a onclick="go('projects')">Projects</a><a onclick="go('joinus')">Join Us</a><a onclick="go('contact')">Contact</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════════ ABOUT ════════ -->
+<div class="page" id="p-about">
+  <div class="about-hero-sec">
+    <div class="wrap">
+      <div class="tag">Our Story</div>
+      <h1 class="ttl">Built on <span class="accent">Engineering Excellence</span><br>& Local Trust</h1>
+      <p class="sub">From a 2-person team in Raipur to a full-scale Electromechanical service company — PR WIRING & ELECTROMECH has grown through hard work, technical precision, and trust of 500+ clients across Chhattisgarh.</p>
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="g2a">
+        <div>
+          <div class="tag">Journey</div>
+          <h2 class="ttl" style="font-size:1.8rem;margin-bottom:2rem">Company <span class="accent">Timeline</span></h2>
+          <div class="tl-wrap">
+            <div class="tl-item"><div class="tl-yr">2014</div><div class="tl-ttl">Founded in Raipur</div><div class="tl-d">Started as residential wiring service with 2 electricians and a vision for quality-first work.</div></div>
+            <div class="tl-item"><div class="tl-yr">2016</div><div class="tl-ttl">Commercial Expansion</div><div class="tl-d">Moved into commercial projects — offices, shops, factories across Raipur & Bhilai.</div></div>
+            <div class="tl-item"><div class="tl-yr">2018</div><div class="tl-ttl">Industrial Projects Begin</div><div class="tl-d">Secured first industrial contracts at SIDC Urla — HT/LT panels and motor wiring.</div></div>
+            <div class="tl-item"><div class="tl-yr">2020</div><div class="tl-ttl">Electromechanical Division</div><div class="tl-d">Launched Electromech wing — motors, pumps, compressors, integrated systems.</div></div>
+            <div class="tl-item"><div class="tl-yr">2023</div><div class="tl-ttl">500+ Projects Milestone</div><div class="tl-d">Crossed 500 completed projects. Expanded to 20+ certified technicians and engineers.</div></div>
+            <div class="tl-item"><div class="tl-yr">2024–25</div><div class="tl-ttl">Digital & Growth Phase</div><div class="tl-d">Launched digital service platform, online booking, and employee management system.</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="tag">Founder's Message</div>
+          <div class="msg-card">
+            <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem">
+              <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#0066CC,#00CFFF);display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0">👷</div>
+              <div>
+                <div style="font-family:var(--f2);font-weight:700;color:#fff;font-size:1.1rem">Pramod Rajput</div>
+                <div style="font-family:var(--f3);font-size:0.65rem;color:var(--E);letter-spacing:2px;margin-top:3px">FOUNDER & LEAD ENGINEER</div>
+              </div>
+            </div>
+            <p style="font-size:0.9rem;color:var(--txt);line-height:1.8;font-style:italic;border-left:3px solid var(--E);padding-left:1rem">"When I started PR WIRING, there was a clear gap — people needed trustworthy, technically correct electrical work but were getting unqualified contractors. I built this company to change that. Every wire we lay, every panel we install, carries my name. That's our quality guarantee — the engineer himself ensures your safety."</p>
+            <div class="creds" style="margin-top:1rem">
+              <span class="cred">📜 B.E. Electrical</span>
+              <span class="cred">✅ CG Licensed</span>
+              <span class="cred">🏆 10+ Years</span>
+            </div>
+          </div>
+          <div style="margin-top:1.5rem">
+            <div class="card" style="margin-bottom:1rem">
+              <h4 style="color:var(--E);font-family:var(--f1);font-weight:700;margin-bottom:6px">🎯 Vision</h4>
+              <p style="font-size:0.85rem;color:var(--muted);line-height:1.65">To be Chhattisgarh's most trusted electrical & electromechanical service company — setting the standard for quality, safety & engineer-led excellence.</p>
+            </div>
+            <div class="card">
+              <h4 style="color:var(--E);font-family:var(--f1);font-weight:700;margin-bottom:6px">🚀 Mission</h4>
+              <p style="font-size:0.85rem;color:var(--muted);line-height:1.65">Deliver technically superior, safety-compliant electrical solutions with complete transparency, on-time delivery & lasting client relationships across Raipur, Bhilai and beyond.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="tag">Our Team</div>
+      <h2 class="ttl">The <span class="accent">People</span> Behind Every Project</h2>
+      <div class="g4" style="margin-top:2rem">
+        <div class="card team-card"><div class="team-av">🔧</div><div class="team-role">LEAD ENGINEER</div><div class="team-nm">Electrical Engineer</div><div class="team-d">Project design, load calculation, supervision & quality control of every job</div></div>
+        <div class="card team-card"><div class="team-av">⚡</div><div class="team-role">FIELD SPECIALIST</div><div class="team-nm">Licensed Electrician</div><div class="team-d">IS-code compliant wiring, panel work, testing & commissioning on site</div></div>
+        <div class="card team-card"><div class="team-av">⚙️</div><div class="team-role">MECH TECH</div><div class="team-nm">Mechanical Technician</div><div class="team-d">Motor, pump, compressor servicing & electromechanical integration</div></div>
+        <div class="card team-card"><div class="team-av">💼</div><div class="team-role">COMMERCIAL</div><div class="team-nm">Commercial Expert</div><div class="team-d">Quotations, contracts, client relations & project coordination</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="tag">Core Values</div>
+      <h2 class="ttl" style="margin-bottom:1.5rem">What We <span class="accent">Stand For</span></h2>
+      <div>
+        <span class="val-chip">🛡️ Safety First</span><span class="val-chip">✅ Quality Work</span>
+        <span class="val-chip">📋 Transparency</span><span class="val-chip">⏰ Punctuality</span>
+        <span class="val-chip">🤝 Client Trust</span><span class="val-chip">📈 Growth Mindset</span>
+        <span class="val-chip">🎓 Technical Excellence</span><span class="val-chip">🌍 Local Pride</span>
+        <span class="val-chip">💡 Innovation</span><span class="val-chip">👷 Team Respect</span>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="ft-main"><strong>PR WIRING & ELECTROMECH</strong> — Your Vision, Our Success &nbsp;|&nbsp; 📞 <a href="tel:7354283083" style="color:var(--E);text-decoration:none">7354283083</a> &nbsp;|&nbsp; 📍 Raipur | Bhilai</div>
+  </footer>
+</div>
+
+<!-- ════════════════════════════════════════════ SERVICE ════════ -->
+<div class="page" id="p-service">
+  <section class="sec">
+    <div class="wrap">
+      <div class="tag">Services</div>
+      <h1 class="ttl">Complete <span class="accent">Service Portfolio</span></h1>
+      <p class="sub" style="margin-bottom:2.5rem">Select a category to explore detailed services, scope of work & pricing packages.</p>
+
+      <div class="svc-tabs">
+        <button class="st on" onclick="svcTab('res',this)">🏠 Residential</button>
+        <button class="st" onclick="svcTab('com',this)">🏢 Commercial</button>
+        <button class="st" onclick="svcTab('ind',this)">🏭 Industrial</button>
+        <button class="st" onclick="svcTab('em',this)">⚙️ Electromechanical</button>
+      </div>
+
+      <div class="svc-pane on" id="sp-res">
+        <div style="margin-bottom:1.5rem"><span class="badge badge-e">RESIDENTIAL</span> &nbsp; <span style="color:var(--muted);font-size:0.85rem">Complete home electrical solutions</span></div>
+        <div class="svc-item-grid">
+          <div class="svc-item"><div class="ico">🔌</div><div><h4>Complete House Wiring</h4><p>New construction & rewiring with IS 732 compliant installation, copper conductors</p></div></div>
+          <div class="svc-item"><div class="ico">📦</div><div><h4>Distribution Panels & MCB</h4><p>Main DB, sub-DB with RCCB/MCB, ELCB protection for full safety</p></div></div>
+          <div class="svc-item"><div class="ico">💡</div><div><h4>LED Lighting Installation</h4><p>Interior, exterior, decorative & energy-efficient LED fitting & design</p></div></div>
+          <div class="svc-item"><div class="ico">🌀</div><div><h4>Fan & AC Points</h4><p>Ceiling fans, exhaust, dedicated 16A AC circuits with proper breakers</p></div></div>
+          <div class="svc-item"><div class="ico">🌍</div><div><h4>Earthing & Grounding</h4><p>Pipe/plate earthing as per IS 3043 — mandatory safety for every home</p></div></div>
+          <div class="svc-item"><div class="ico">🔥</div><div><h4>Geyser & Kitchen Wiring</h4><p>Dedicated circuits for geyser, induction, chimney, and all appliances</p></div></div>
+          <div class="svc-item"><div class="ico">📡</div><div><h4>Smart Home Provision</h4><p>Automation-ready conduit, CAT6 cabling points for smart devices</p></div></div>
+          <div class="svc-item"><div class="ico">🛠️</div><div><h4>Repair & Maintenance</h4><p>Fault finding, partial rewiring, MCB replacement, component repair</p></div></div>
+        </div>
+      </div>
+
+      <div class="svc-pane" id="sp-com">
+        <div style="margin-bottom:1.5rem"><span class="badge badge-e">COMMERCIAL</span> &nbsp; <span style="color:var(--muted);font-size:0.85rem">Professional business electrical systems</span></div>
+        <div class="svc-item-grid">
+          <div class="svc-item"><div class="ico">🏗️</div><div><h4>Commercial Building Wiring</h4><p>Complete power, lighting & control wiring for offices, malls & shops</p></div></div>
+          <div class="svc-item"><div class="ico">⚡</div><div><h4>LT Panel Installation</h4><p>Power distribution boards, bus ducts, metering & MCCB protection</p></div></div>
+          <div class="svc-item"><div class="ico">💡</div><div><h4>Commercial Lighting Design</h4><p>Lux-level calculation, energy-efficient LED commercial lighting systems</p></div></div>
+          <div class="svc-item"><div class="ico">📹</div><div><h4>CCTV & Security Wiring</h4><p>Power & data cabling for cameras, access control, intercoms</p></div></div>
+          <div class="svc-item"><div class="ico">🔥</div><div><h4>Fire Alarm Wiring</h4><p>Detector, alarm panel cabling per NBC fire safety norms</p></div></div>
+          <div class="svc-item"><div class="ico">☀️</div><div><h4>Solar & DG Integration</h4><p>Solar panel wiring, DG synchronization, ATS changeover panels</p></div></div>
+          <div class="svc-item"><div class="ico">📋</div><div><h4>Commercial AMC</h4><p>Annual maintenance for offices — preventive + priority breakdown</p></div></div>
+          <div class="svc-item"><div class="ico">📊</div><div><h4>Load Audit & PFC</h4><p>Power factor correction capacitor bank, energy audit & optimization</p></div></div>
+        </div>
+      </div>
+
+      <div class="svc-pane" id="sp-ind">
+        <div style="margin-bottom:1.5rem"><span class="badge badge-e">INDUSTRIAL</span> &nbsp; <span style="color:var(--muted);font-size:0.85rem">Heavy-duty factory & plant electrification</span></div>
+        <div class="svc-item-grid">
+          <div class="svc-item"><div class="ico">🏭</div><div><h4>Factory & Plant Wiring</h4><p>Complete electrical for manufacturing plants — power, lighting & control</p></div></div>
+          <div class="svc-item"><div class="ico">📦</div><div><h4>HT/LT Panel Erection</h4><p>High/Low tension switchgear, VCB, ACB, MCCB installation & testing</p></div></div>
+          <div class="svc-item"><div class="ico">🔄</div><div><h4>Motor Control Centers</h4><p>MCC panels, star-delta starters, VFD drives, DOL & soft starters</p></div></div>
+          <div class="svc-item"><div class="ico">💻</div><div><h4>PLC & Automation Wiring</h4><p>Control panel wiring, PLC I/O termination, field instrument cabling</p></div></div>
+          <div class="svc-item"><div class="ico">🔧</div><div><h4>Busduct & Cable Trays</h4><p>Busbar trunking, cable tray layout, GI conduit, cable pulling & termination</p></div></div>
+          <div class="svc-item"><div class="ico">🌍</div><div><h4>Industrial Earthing System</h4><p>Mesh earthing, equipment grounding, lightning protection as per IS</p></div></div>
+          <div class="svc-item"><div class="ico">📋</div><div><h4>Industrial AMC</h4><p>Comprehensive annual maintenance covering all electrical equipment</p></div></div>
+          <div class="svc-item"><div class="ico">🔍</div><div><h4>Testing & Commissioning</h4><p>IR testing, load testing, loop checking, commissioning documentation</p></div></div>
+        </div>
+      </div>
+
+      <div class="svc-pane" id="sp-em">
+        <div style="margin-bottom:1.5rem"><span class="badge badge-e">ELECTROMECH</span> &nbsp; <span style="color:var(--muted);font-size:0.85rem">Integrated mechanical + electrical systems</span></div>
+        <div class="svc-item-grid">
+          <div class="svc-item"><div class="ico">⚙️</div><div><h4>Motor Installation & Repair</h4><p>3-phase & single-phase motors — installation, rewinding & field servicing</p></div></div>
+          <div class="svc-item"><div class="ico">💧</div><div><h4>Pump Installation</h4><p>Submersible, centrifugal, booster pumps — installation & commissioning</p></div></div>
+          <div class="svc-item"><div class="ico">🌬️</div><div><h4>Compressor & HVAC Wiring</h4><p>Compressor power circuits, HVAC control wiring, chiller connections</p></div></div>
+          <div class="svc-item"><div class="ico">🔋</div><div><h4>Generator & UPS Systems</h4><p>DG set erection, synchronization panels, UPS installation & AMC</p></div></div>
+          <div class="svc-item"><div class="ico">🏗️</div><div><h4>Conveyor & Material Handling</h4><p>Conveyor motor wiring, limit switches, safety interlock circuits</p></div></div>
+          <div class="svc-item"><div class="ico">🔄</div><div><h4>VFD & Soft Starter</h4><p>Variable frequency drive installation, commissioning & programming</p></div></div>
+          <div class="svc-item"><div class="ico">🛠️</div><div><h4>Mechanical Maintenance</h4><p>Bearing replacement, coupling alignment, belt, pulley, gearbox work</p></div></div>
+          <div class="svc-item"><div class="ico">📊</div><div><h4>Integrated AMC</h4><p>Combined electrical + mechanical annual maintenance contracts</p></div></div>
+        </div>
+      </div>
+
+      <!-- PRICING -->
+      <div class="divhr"></div>
+      <div class="tag">Pricing</div>
+      <h2 class="ttl">Transparent <span class="accent">Pricing Packages</span></h2>
+      <p style="color:var(--muted);font-size:0.83rem;margin-top:8px;margin-bottom:0.5rem">*Approximate ranges. Final quote after free site visit. Varies by scope, material grade & location.</p>
+      <div class="price-g">
+        <div class="price-card">
+          <div class="pc-plan">BASIC</div>
+          <div class="pc-range">₹8K – ₹25K</div>
+          <div class="pc-note">Small homes / repairs</div>
+          <ul class="pc-ft">
+            <li>1BHK / 2BHK wiring</li>
+            <li>Basic MCB panel</li>
+            <li>Light & fan points</li>
+            <li>Basic earthing</li>
+            <li>1-month warranty</li>
+          </ul>
+          <button class="btn btn-o" style="width:100%;justify-content:center" onclick="go('contact')">Get Quote</button>
+        </div>
+        <div class="price-card feat">
+          <div class="pc-pop">MOST POPULAR</div>
+          <div class="pc-plan">STANDARD</div>
+          <div class="pc-range">₹25K – ₹80K</div>
+          <div class="pc-note">3BHK homes / offices</div>
+          <ul class="pc-ft">
+            <li>Complete 3BHK wiring</li>
+            <li>RCCB + MCB panel</li>
+            <li>All points + AC circuits</li>
+            <li>IS 3043 earthing</li>
+            <li>LED provision</li>
+            <li>1-year warranty</li>
+          </ul>
+          <button class="btn btn-p" style="width:100%;justify-content:center" onclick="go('contact')">Get Quote</button>
+        </div>
+        <div class="price-card">
+          <div class="pc-plan">COMPLETE</div>
+          <div class="pc-range">₹80K – ₹5L+</div>
+          <div class="pc-note">Commercial / Industrial</div>
+          <ul class="pc-ft">
+            <li>Full commercial wiring</li>
+            <li>LT/HT panel work</li>
+            <li>CCTV, fire alarm</li>
+            <li>T&C + drawings</li>
+            <li>2-year warranty</li>
+            <li>AMC option</li>
+          </ul>
+          <button class="btn btn-o" style="width:100%;justify-content:center" onclick="go('contact')">Get Quote</button>
+        </div>
+        <div class="price-card">
+          <div class="pc-plan">MECHANICAL</div>
+          <div class="pc-range">₹5K – ₹2L+</div>
+          <div class="pc-note">Motors, pumps & systems</div>
+          <ul class="pc-ft">
+            <li>Motor / pump install</li>
+            <li>VFD & starter panels</li>
+            <li>Generator & UPS</li>
+            <li>HVAC wiring</li>
+            <li>Integrated AMC</li>
+            <li>On-call support</li>
+          </ul>
+          <button class="btn btn-o" style="width:100%;justify-content:center" onclick="go('contact')">Get Quote</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer><div class="ft-main"><strong>PR WIRING & ELECTROMECH</strong> — Your Vision, Our Success &nbsp;|&nbsp; 📞 <a href="tel:7354283083" style="color:var(--E);text-decoration:none">7354283083</a> &nbsp;|&nbsp; 📍 Raipur | Bhilai</div></footer>
+</div>
+
+<!-- ════════════════════════════════════════════ PROJECTS ════════ -->
+<div class="page" id="p-projects">
+  <section class="sec">
+    <div class="wrap">
+      <div class="tag">Portfolio</div>
+      <h1 class="ttl">Project <span class="accent">Portfolio</span></h1>
+      <div class="stats-bar" style="margin:2rem 0 2.5rem">
+        <div class="stat"><span class="stat-n">500+</span><span class="stat-l">TOTAL PROJECTS</span></div>
+        <div class="stat"><span class="stat-n">300+</span><span class="stat-l">RESIDENTIAL</span></div>
+        <div class="stat"><span class="stat-n">150+</span><span class="stat-l">COMMERCIAL</span></div>
+        <div class="stat"><span class="stat-n">50+</span><span class="stat-l">INDUSTRIAL</span></div>
+      </div>
+      <div class="filter-row">
+        <button class="fb on" onclick="filterP('all',this)">All</button>
+        <button class="fb" onclick="filterP('r',this)">🏠 Residential</button>
+        <button class="fb" onclick="filterP('c',this)">🏢 Commercial</button>
+        <button class="fb" onclick="filterP('i',this)">🏭 Industrial</button>
+      </div>
+      <div class="proj-g" id="projGrid">
+        <div class="proj-card" data-c="r" onclick="openProj(1)">
+          <div class="proj-img">🏠<div class="proj-type"><span class="badge badge-w">RESIDENTIAL</span></div><div class="proj-done"><span class="badge badge-g">✓ COMPLETED</span></div></div>
+          <div class="proj-body"><div class="proj-ttl">3BHK Complete Wiring — Tatibandh</div><div class="proj-meta"><span>📍 Raipur</span><span>⏱ 12 Days</span></div><div class="proj-desc">Full rewiring with RCCB panel, 22 points, AC circuits, IS-compliant earthing. New construction.</div></div>
+        </div>
+        <div class="proj-card" data-c="c" onclick="openProj(2)">
+          <div class="proj-img">🏢<div class="proj-type"><span class="badge badge-e">COMMERCIAL</span></div><div class="proj-done"><span class="badge badge-g">✓ COMPLETED</span></div></div>
+          <div class="proj-body"><div class="proj-ttl">IT Office Wiring — 3 Floors</div><div class="proj-meta"><span>📍 Civil Lines, Raipur</span><span>⏱ 25 Days</span></div><div class="proj-desc">200+ data+power points, LT panel, CCTV wiring, UPS integration for 3-floor IT office.</div></div>
+        </div>
+        <div class="proj-card" data-c="i" onclick="openProj(3)">
+          <div class="proj-img">🏭<div class="proj-type"><span class="badge badge-e">INDUSTRIAL</span></div><div class="proj-done"><span class="badge badge-g">✓ COMPLETED</span></div></div>
+          <div class="proj-body"><div class="proj-ttl">Rice Mill — MCC Panel</div><div class="proj-meta"><span>📍 Durg</span><span>⏱ 30 Days</span></div><div class="proj-desc">Complete MCC for 8 motors (15–100HP), busduct, cable tray, commissioning & testing.</div></div>
+        </div>
+        <div class="proj-card" data-c="r" onclick="openProj(4)">
+          <div class="proj-img">🏘️<div class="proj-type"><span class="badge badge-w">RESIDENTIAL</span></div><div class="proj-done"><span class="badge badge-g">✓ COMPLETED</span></div></div>
+          <div class="proj-body"><div class="proj-ttl">Villa Complex — 12 Units</div><div class="proj-meta"><span>📍 Bhilai</span><span>⏱ 45 Days</span></div><div class="proj-desc">12-villa gated community — unit DB panels, common lighting, solar provision, earthing.</div></div>
+        </div>
+        <div class="proj-card" data-c="c" onclick="openProj(5)">
+          <div class="proj-img">🏪<div class="proj-type"><span class="badge badge-e">COMMERCIAL</span></div><div class="proj-done"><span class="badge badge-g">✓ COMPLETED</span></div></div>
+          <div class="proj-body"><div class="proj-ttl">Shopping Complex — G+2</div><div class="proj-meta"><span>📍 Raipur</span><span>⏱ 60 Days</span></div><div class="proj-desc">LT panel, shop wiring, common lighting, fire alarm & CCTV wiring for G+2 shopping complex.</div></div>
+        </div>
+        <div class="proj-card" data-c="i" onclick="openProj(6)">
+          <div class="proj-img">⚙️<div class="proj-type"><span class="badge badge-e">INDUSTRIAL</span></div><div class="proj-done"><span class="badge badge-g">✓ COMPLETED</span></div></div>
+          <div class="proj-body"><div class="proj-ttl">Steel Plant — Pump House</div><div class="proj-meta"><span>📍 SIDC Urla, Raipur</span><span>⏱ 40 Days</span></div><div class="proj-desc">6-pump electrification — 3-phase panels, earthing mesh, cable trays, testing & commissioning.</div></div>
+        </div>
+      </div>
+
+      <!-- REVIEWS -->
+      <div class="divhr"></div>
+      <div class="tag">Client Reviews</div>
+      <h2 class="ttl">What Clients <span class="accent">Say About Us</span></h2>
+      <div class="rev-top" style="margin-top:1.5rem">
+        <div class="rev-num">4.9</div>
+        <div>
+          <div class="rev-stars">⭐⭐⭐⭐⭐</div>
+          <div style="font-family:var(--f1);font-weight:700;color:#fff;font-size:1rem">Google Rating</div>
+          <div class="rev-count">Based on 120+ verified Google reviews &nbsp;•&nbsp; Raipur, Chhattisgarh</div>
+        </div>
+        <div style="margin-left:auto">
+          <a href="https://share.google/3vGCoirndf3nVNJFd" target="_blank" class="btn btn-g" style="font-size:0.78rem">View on Google →</a>
+        </div>
+      </div>
+      <div class="g3">
+        <div class="rev-card"><div class="rev-stars-sm">★★★★★</div><div class="rev-txt">"Pramod ji ki team ne humara 3BHK ka poora wiring 10 din mein khatam ki. Clean work, no shortcuts, perfect earthing. Highly recommend!"</div><div class="rev-user"><div class="rev-av">R</div><div><div class="rev-name">Ramesh Sharma</div><div class="rev-loc">Tatibandh, Raipur • 2 months ago</div></div></div></div>
+        <div class="rev-card"><div class="rev-stars-sm">★★★★★</div><div class="rev-txt">"Mere factory ka MCC panel ka kaam bahut professional tarike se hua. On time, within budget, proper documentation diya. Best in Raipur!"</div><div class="rev-user"><div class="rev-av">S</div><div><div class="rev-name">Suresh Agrawal</div><div class="rev-loc">Urla, Raipur • 1 month ago</div></div></div></div>
+        <div class="rev-card"><div class="rev-stars-sm">★★★★★</div><div class="rev-txt">"Office ke 3 floors ka wiring PR WIRING ne kiya. Very systematic — proper load calculation, cable sizing, beautiful panel. Worth every rupee!"</div><div class="rev-user"><div class="rev-av">A</div><div><div class="rev-name">Ankita Verma</div><div class="rev-loc">Civil Lines, Raipur • 3 weeks ago</div></div></div></div>
+        <div class="rev-card"><div class="rev-stars-sm">★★★★★</div><div class="rev-txt">"AMC ke liye PR Wiring ko liya — unke technicians time par aate hain, sab kuch properly check karte hain. Very professional company."</div><div class="rev-user"><div class="rev-av">V</div><div><div class="rev-name">Vijay Thakur</div><div class="rev-loc">Bhilai • 2 weeks ago</div></div></div></div>
+        <div class="rev-card"><div class="rev-stars-sm">★★★★★</div><div class="rev-txt">"Pump installation ka kaam bahut hi accha hua. Motor wiring, panel, earthing sab ek jagah se karwa liya. Tension-free experience!"</div><div class="rev-user"><div class="rev-av">M</div><div><div class="rev-name">Mohan Chandel</div><div class="rev-loc">Durg • 1 month ago</div></div></div></div>
+        <div class="rev-card"><div class="rev-stars-sm">★★★★★</div><div class="rev-txt">"Villa complex ka electrical kaam inse karaya — engineer khud site par the. Quality of work is top-notch. Neighbors bhi bahut khush hain!"</div><div class="rev-user"><div class="rev-av">P</div><div><div class="rev-name">Priya Soni</div><div class="rev-loc">Bhilai • 5 weeks ago</div></div></div></div>
+      </div>
+
+      <!-- GOOGLE MAP LOCATION -->
+      <div class="map-wrap">
+        <div class="map-hdr">
+          <div class="map-hdr-ico">📍</div>
+          <div>
+            <h3>PR WIRING & ELECTROMECH — Raipur, Chhattisgarh</h3>
+            <p>⭐ 4.9 Rating on Google &nbsp;•&nbsp; Open Mon–Sat 8 AM – 8 PM &nbsp;•&nbsp; Emergency: 24/7</p>
+          </div>
+          <a href="https://share.google/3vGCoirndf3nVNJFd" target="_blank" class="btn btn-g" style="margin-left:auto;font-size:0.75rem;white-space:nowrap">Open in Maps ↗</a>
+        </div>
+        <iframe class="map-iframe"
+          src="https://maps.google.com/maps?q=Raipur+Chhattisgarh+India&output=embed&z=14&hl=en"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="PR Wiring Location"></iframe>
+        <div class="map-foot">
+          <div class="map-ft-item"><strong>⭐ 4.9 / 5.0</strong><span>120+ Google Reviews</span></div>
+          <div class="map-ft-item"><strong>📞 73-5428-3083</strong><span>Call or WhatsApp</span></div>
+          <div class="map-ft-item"><strong>📍 Raipur, CG</strong><span>50km service radius</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer><div class="ft-main"><strong>PR WIRING & ELECTROMECH</strong> — Your Vision, Our Success &nbsp;|&nbsp; 📞 <a href="tel:7354283083" style="color:var(--E);text-decoration:none">7354283083</a> &nbsp;|&nbsp; 📍 Raipur | Bhilai</div></footer>
+</div>
+
+<!-- ════════════════════════════════════════════ JOIN US ════════ -->
+<div class="page" id="p-joinus">
+  <section class="sec">
+    <div class="wrap">
+      <div class="tag">Careers</div>
+      <h1 class="ttl">Join <span class="accent">PR WIRING</span> Family</h1>
+      <p class="sub" style="margin-bottom:3rem">We're hiring skilled electricians, fitters & technicians who take pride in quality work. Join a growing company with steady income and a respectful work culture.</p>
+
+      <div class="tag">Benefits</div>
+      <h2 class="ttl" style="font-size:1.7rem;margin-bottom:1.5rem">Why Work <span class="accent">With Us</span></h2>
+      <div class="ben-g">
+        <div class="ben"><div class="ben-ico">💰</div><div><h4>Steady Work & Timely Pay</h4><p>Consistent project flow, salary paid on time — no delays, always.</p></div></div>
+        <div class="ben"><div class="ben-ico">🛡️</div><div><h4>Safety Equipment Provided</h4><p>PPE — gloves, helmet, safety shoes, harness — provided for every job.</p></div></div>
+        <div class="ben"><div class="ben-ico">📈</div><div><h4>Skill Growth</h4><p>Training, new tech exposure — VFD, automation, solar. Grow your career.</p></div></div>
+        <div class="ben"><div class="ben-ico">🤝</div><div><h4>Supportive Team Culture</h4><p>Respectful environment, engineer mentorship, clear communication.</p></div></div>
+        <div class="ben"><div class="ben-ico">🏠</div><div><h4>Local Jobs — Near Home</h4><p>Projects in Raipur/Bhilai area — work close to home, less travel.</p></div></div>
+        <div class="ben"><div class="ben-ico">🎯</div><div><h4>Performance Incentives</h4><p>Bonus for quality work, on-time completion & client appreciation.</p></div></div>
+      </div>
+
+      <!-- OPEN POSITIONS -->
+      <div class="divhr"></div>
+      <div class="tag">Openings</div>
+      <h2 class="ttl" style="font-size:1.7rem;margin-bottom:1.5rem">Current <span class="accent">Positions</span></h2>
+      <div class="pos-g">
+        <div class="pos-card"><div class="pos-typ">FULL TIME</div><div class="pos-ttl">Industrial Electrician</div><div class="pos-tags"><span class="pos-tag">Factory</span><span class="pos-tag">Panel Work</span><span class="pos-tag">3-Phase</span></div><div class="pos-d">Experience in industrial wiring, MCC panels, motor connections. ITI/Wireman preferred. 2+ years. SIDC area projects.</div></div>
+        <div class="pos-card"><div class="pos-typ">FULL TIME</div><div class="pos-ttl">Residential Electrician</div><div class="pos-tags"><span class="pos-tag">House Wiring</span><span class="pos-tag">MCB Panel</span><span class="pos-tag">Earthing</span></div><div class="pos-d">Complete house wiring, panel fitting, earthing. IS 732 basics required. 1+ year. Good knowledge of Raipur/Bhilai.</div></div>
+        <div class="pos-card"><div class="pos-typ">FULL TIME</div><div class="pos-ttl">Commercial Electrician</div><div class="pos-tags"><span class="pos-tag">Offices</span><span class="pos-tag">CCTV Wiring</span><span class="pos-tag">LT Panel</span></div><div class="pos-d">Office/shop wiring, LT panels, lighting, data cabling. Fire alarm experience a plus. 2+ years experience.</div></div>
+        <div class="pos-card"><div class="pos-typ">FULL TIME</div><div class="pos-ttl">Mechanical Fitter / Helper</div><div class="pos-tags"><span class="pos-tag">Motors</span><span class="pos-tag">Pumps</span><span class="pos-tag">Mechanical</span></div><div class="pos-d">Motor/pump installation, mechanical fitting, maintenance. Freshers with ITI welcome. On-job training provided.</div></div>
+      </div>
+
+      <!-- 5-STEP PROCESS -->
+      <div class="divhr"></div>
+      <div class="tag">Process</div>
+      <h2 class="ttl" style="font-size:1.7rem;margin-bottom:2rem">5-Step <span class="accent">Hiring Journey</span></h2>
+      <div class="steps-row">
+        <div class="step"><div class="step-n">1</div><div class="step-ttl">Apply</div><div class="step-d">Fill form below</div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-ttl">Review</div><div class="step-d">We check details</div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-ttl">Interview</div><div class="step-d">Phone/in-person</div></div>
+        <div class="step"><div class="step-n">4</div><div class="step-ttl">Trial Day</div><div class="step-d">1-day skill check</div></div>
+        <div class="step"><div class="step-n">5</div><div class="step-ttl">Welcome!</div><div class="step-d">Join the team</div></div>
+      </div>
+
+      <!-- APPLICATION FORM -->
+      <div class="divhr"></div>
+      <div class="tag">Apply</div>
+      <h2 class="ttl" style="font-size:1.7rem;margin-bottom:1.5rem">Submit <span class="accent">Your Application</span></h2>
+      <div class="form-box" style="max-width:680px">
+        <div class="frow">
+          <div class="fg half"><label>Full Name *</label><input type="text" placeholder="Aapka poora naam"></div>
+          <div class="fg half"><label>Mobile Number *</label><input type="tel" placeholder="10-digit number"></div>
+        </div>
+        <div class="frow">
+          <div class="fg half"><label>Primary Skill *</label>
+            <select><option>Residential Electrician</option><option>Industrial Electrician</option><option>Commercial Electrician</option><option>Mechanical Fitter</option><option>Helper</option></select></div>
+          <div class="fg half"><label>Experience</label>
+            <select><option>Fresher (ITI)</option><option>1–2 Years</option><option>3–5 Years</option><option>5+ Years</option></select></div>
+        </div>
+        <div class="frow">
+          <div class="fg half"><label>Your Location</label><input type="text" placeholder="City / Area (e.g. Bhilai, Durg)"></div>
+          <div class="fg half"><label>Availability</label>
+            <select><option>Immediately</option><option>Within 1 Week</option><option>Within 1 Month</option></select></div>
+        </div>
+        <div class="fg"><label>Additional Info</label><textarea placeholder="Certificates held, past work experience, anything relevant..."></textarea></div>
+        <button class="btn btn-p" onclick="toast('✅ Application submitted! We will contact you within 24 hours.')">📤 Submit Application</button>
+      </div>
+    </div>
+  </section>
+  <footer><div class="ft-main"><strong>PR WIRING & ELECTROMECH</strong> — Your Vision, Our Success &nbsp;|&nbsp; 📞 <a href="tel:7354283083" style="color:var(--E);text-decoration:none">7354283083</a> &nbsp;|&nbsp; 📍 Raipur | Bhilai</div></footer>
+</div>
+
+<!-- ════════════════════════════════════════════ CONTACT ════════ -->
+<div class="page" id="p-contact">
+  <section class="sec">
+    <div class="wrap">
+      <div class="tag">Get In Touch</div>
+      <h1 class="ttl">Contact <span class="accent">PR WIRING</span></h1>
+      <div class="ci-g" style="margin-top:2rem">
+        <div class="ci"><div class="ci-ico">📞</div><div class="ci-lbl">Call Us</div><div class="ci-val"><a href="tel:7354283083" style="color:#fff;text-decoration:none">73-5428-3083</a></div><div class="ci-sub">Mon–Sat, 8 AM – 8 PM</div></div>
+        <div class="ci"><div class="ci-ico">💬</div><div class="ci-lbl">WhatsApp</div><div class="ci-val"><a href="https://wa.me/917354283083" target="_blank" style="color:#fff;text-decoration:none">7354283083</a></div><div class="ci-sub">Quick response guaranteed</div></div>
+        <div class="ci"><div class="ci-ico">📍</div><div class="ci-lbl">Location</div><div class="ci-val">Raipur, CG</div><div class="ci-sub">Serving 50km radius</div></div>
+        <div class="ci"><div class="ci-ico">⏰</div><div class="ci-lbl">Working Hours</div><div class="ci-val">Mon – Sat</div><div class="ci-sub">8 AM–8 PM | Emergency 24/7</div></div>
+      </div>
+
+      <div class="g2a">
+        <div>
+          <div class="tag">Send Message</div>
+          <h2 class="ttl" style="font-size:1.7rem;margin-bottom:1.5rem">Request a <span class="accent">Free Quote</span></h2>
+          <div class="form-box">
+            <div class="frow">
+              <div class="fg half"><label>Full Name *</label><input type="text" placeholder="Your name"></div>
+              <div class="fg half"><label>Mobile *</label><input type="tel" placeholder="Mobile number"></div>
+            </div>
+            <div class="frow">
+              <div class="fg half"><label>Work Type</label>
+                <select><option>Residential Wiring</option><option>Commercial Electrical</option><option>Industrial Work</option><option>Electromechanical</option><option>AMC</option><option>Emergency Repair</option></select></div>
+              <div class="fg half"><label>Project Size</label>
+                <select><option>Small (1 Room / Repair)</option><option>Medium (1–3 BHK)</option><option>Large (Bungalow / Office)</option><option>Industrial / Factory</option></select></div>
+            </div>
+            <div class="frow">
+              <div class="fg half"><label>Site Address</label><input type="text" placeholder="Location / Colony / Area"></div>
+              <div class="fg half"><label>Preferred Time</label>
+                <select><option>Morning (8–12)</option><option>Afternoon (12–4)</option><option>Evening (4–8)</option><option>Anytime</option></select></div>
+            </div>
+            <div class="fg"><label>Details / Message</label><textarea placeholder="Describe your requirement in detail..."></textarea></div>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.5rem">
+              <button class="btn btn-p" onclick="toast('✅ Message sent! We will call you within 30 minutes.')">📤 Send Message</button>
+              <a href="https://wa.me/917354283083?text=Hi%20PR%20Wiring%2C%20I%20need%20a%20quote%20for%20electrical%20work" target="_blank" class="btn btn-o">💬 WhatsApp Now</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="tag">FAQ</div>
+          <h2 class="ttl" style="font-size:1.7rem;margin-bottom:1.5rem">Common <span class="accent">Questions</span></h2>
+          <div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Do you provide free site inspection?<span class="faq-tog">+</span></div><div class="faq-a">Yes — free site visit for estimation within Raipur & Bhilai. For other areas, a nominal visit charge applies, adjusted in the final bill.</div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">How long does house wiring take?<span class="faq-tog">+</span></div><div class="faq-a">Standard 2–3 BHK wiring takes 7–12 working days depending on size & scope. Clear timeline given before work starts.</div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Do you use ISI certified materials?<span class="faq-tog">+</span></div><div class="faq-a">Absolutely — ISI marked wires, MCBs, switches. Brands: Havells, Polycab, Legrand, Anchor — as per your budget.</div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Do you offer Annual Maintenance Contract?<span class="faq-tog">+</span></div><div class="faq-a">Yes — AMC for homes, offices & industries. Includes periodic inspection, preventive maintenance & priority breakdown support. Contact us for pricing.</div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Do you work outside Raipur?<span class="faq-tog">+</span></div><div class="faq-a">Yes — Raipur, Bhilai, Durg, Rajnandgaon, Bilaspur & nearby areas. Travel allowance may apply for remote locations.</div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Is proper earthing really necessary?<span class="faq-tog">+</span></div><div class="faq-a">Yes! IS 3043 earthing is mandatory and is your primary protection against electric shock. We never skip earthing — it's non-negotiable for us.</div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Do you handle emergency breakdowns?<span class="faq-tog">+</span></div><div class="faq-a">Yes — 24/7 emergency support available. Call or WhatsApp 7354283083 for urgent electrical breakdowns, tripping, short circuits.</div></div>
+          </div>
+          <div style="margin-top:2rem">
+            <div class="tag">Service Areas</div>
+            <h3 style="font-family:var(--f1);font-weight:700;color:#fff;font-size:1rem;margin-bottom:10px">We Serve Across <span class="accent">Chhattisgarh</span></h3>
+            <div class="areas">
+              <span class="area">📍 Raipur</span><span class="area">📍 Bhilai</span><span class="area">📍 Durg</span>
+              <span class="area">📍 SIDC Urla</span><span class="area">📍 Rajnandgaon</span><span class="area">📍 Bilaspur</span>
+              <span class="area">📍 Tatibandh</span><span class="area">📍 Civil Lines</span><span class="area">📍 Supela</span>
+              <span class="area">📍 Sector 6</span><span class="area">📍 Telibandha</span><span class="area">📍 Shankar Nagar</span>
+              <span class="area">📍 Devendra Nagar</span><span class="area">📍 Pandri</span><span class="area">📍 Avanti Vihar</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer><div class="ft-main"><strong>PR WIRING & ELECTROMECH</strong> — Your Vision, Our Success &nbsp;|&nbsp; 📞 <a href="tel:7354283083" style="color:var(--E);text-decoration:none">7354283083</a> &nbsp;|&nbsp; 📍 Raipur | Bhilai</div></footer>
+</div>
+
+<!-- ════════════════════════════════════════════ LOGIN ════════ -->
+<div class="page" id="p-login">
+  <div class="login-wrap">
+    <div class="login-box">
+      <div style="text-align:center;margin-bottom:1.5rem">
+        <div style="width:56px;height:56px;background:linear-gradient(135deg,#0055cc,#00CFFF);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 12px;box-shadow:var(--glow)">⚡</div>
+        <div style="font-family:var(--f2);font-size:1.2rem;font-weight:700;color:#fff">PR WIRING & ELECTROMECH</div>
+        <div style="font-size:0.78rem;color:var(--muted);margin-top:4px">Sign in to your account</div>
+      </div>
+      <div class="ltabs">
+        <div class="ltab on" onclick="lTab('cust',this)">👤 Customer</div>
+        <div class="ltab" onclick="lTab('emp',this)">👷 Employee</div>
+      </div>
+      <div class="lform on" id="lf-cust">
+        <div class="fg"><label>Mobile Number</label><input type="tel" placeholder="Registered mobile"></div>
+        <div class="fg" style="margin-bottom:1.5rem"><label>Password / OTP</label><input type="password" placeholder="Enter password or OTP"></div>
+        <button class="btn btn-p" style="width:100%;justify-content:center;margin-bottom:1rem" onclick="doLogin('customer')">Sign In as Customer →</button>
+        <div style="text-align:center;font-size:0.8rem;color:var(--muted)">No account? <a onclick="go('contact')" style="color:var(--E);cursor:pointer">Register via WhatsApp</a></div>
+      </div>
+      <div class="lform" id="lf-emp">
+        <div class="fg"><label>Employee ID</label><input type="text" placeholder="Your employee ID (e.g. PR-E-021)"></div>
+        <div class="fg" style="margin-bottom:1.5rem"><label>Password</label><input type="password" placeholder="Enter your password"></div>
+        <button class="btn btn-p" style="width:100%;justify-content:center;margin-bottom:1rem" onclick="doLogin('employee')">Sign In as Employee →</button>
+        <div style="text-align:center;font-size:0.8rem;color:var(--muted)">New employee? <a onclick="go('joinus')" style="color:var(--E);cursor:pointer">Apply here</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ CUSTOMER DASH ════════ -->
+<div class="page" id="p-cdash">
+  <div class="dash-wrap">
+    <div class="dash-side">
+      <div class="dash-logo"><div class="dash-lname">⚡ PR WIRING</div><div class="dash-lsub">CUSTOMER PORTAL</div></div>
+      <div class="dash-nav">
+        <a class="on">📊 Dashboard</a>
+        <a>📋 My Services</a>
+        <a>🔄 In Progress</a>
+        <a>✅ Completed</a>
+        <a>💰 Bills & Payments</a>
+        <a onclick="go('contact')">➕ New Request</a>
+        <a onclick="logOut()" style="margin-top:auto;color:#ff4444">🚪 Logout</a>
+      </div>
+    </div>
+    <div class="dash-main">
+      <div class="dash-hdr"><h2>Welcome back, Ramesh Kumar 👋</h2><p>Customer since 2022 &nbsp;•&nbsp; Tatibandh, Raipur &nbsp;•&nbsp; Last service: 15 Apr 2025</p></div>
+      <div class="kpi-g">
+        <div class="kpi"><span class="kpi-n">8</span><div class="kpi-l">Total Services</div><div class="kpi-ch">↑ 2 this year</div></div>
+        <div class="kpi"><span class="kpi-n">1</span><div class="kpi-l">In Progress</div><div class="kpi-ch">Expected May 10</div></div>
+        <div class="kpi"><span class="kpi-n">7</span><div class="kpi-l">Completed</div><div class="kpi-ch">All verified ✓</div></div>
+        <div class="kpi"><span class="kpi-n">₹0</span><div class="kpi-l">Pending Bill</div><div class="kpi-ch" style="color:#00d264">All paid ✓</div></div>
+      </div>
+      <div class="tbl-box">
+        <div class="tbl-hdr"><h3>Service History</h3><button class="btn btn-p" style="padding:8px 16px;font-size:0.75rem" onclick="go('contact')">+ New Service Request</button></div>
+        <table>
+          <thead><tr><th>Service</th><th>Date</th><th>Location</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>3BHK Complete Wiring</td><td>Jan 2024</td><td>Tatibandh, Raipur</td><td>₹42,000</td><td><span class="sp sp-d">Completed</span></td></tr>
+            <tr><td>MCB Panel Replacement</td><td>Mar 2024</td><td>Tatibandh, Raipur</td><td>₹8,500</td><td><span class="sp sp-d">Completed</span></td></tr>
+            <tr><td>AC Point Addition (2 units)</td><td>Jun 2024</td><td>Tatibandh, Raipur</td><td>₹3,200</td><td><span class="sp sp-d">Completed</span></td></tr>
+            <tr><td>Annual AMC — 2025</td><td>Jan 2025</td><td>Tatibandh, Raipur</td><td>₹4,800</td><td><span class="sp sp-p">In Progress</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ EMPLOYEE DASH ════════ -->
+<div class="page" id="p-edash">
+  <div class="dash-wrap">
+    <div class="dash-side">
+      <div class="dash-logo"><div class="dash-lname">⚡ PR WIRING</div><div class="dash-lsub">EMPLOYEE PORTAL</div></div>
+      <div class="dash-nav">
+        <a class="on">📊 Dashboard</a>
+        <a>⚡ Active Jobs</a>
+        <a>✅ Completed Jobs</a>
+        <a>💰 Earnings</a>
+        <a>📍 Nearby Jobs</a>
+        <a>📆 Schedule</a>
+        <a onclick="logOut()" style="margin-top:auto;color:#ff4444">🚪 Logout</a>
+      </div>
+    </div>
+    <div class="dash-main">
+      <div class="dash-hdr"><h2>Welcome, Manoj Kumar ⚡</h2><p>Electrician &nbsp;•&nbsp; ID: PR-E-021 &nbsp;•&nbsp; Raipur &nbsp;•&nbsp; Joined March 2022</p></div>
+      <div class="kpi-g">
+        <div class="kpi"><span class="kpi-n">3</span><div class="kpi-l">Active Jobs</div><div class="kpi-ch">2 nearby (3km)</div></div>
+        <div class="kpi"><span class="kpi-n">142</span><div class="kpi-l">Jobs Completed</div><div class="kpi-ch">↑ 18 this month</div></div>
+        <div class="kpi"><span class="kpi-n">₹28K</span><div class="kpi-l">This Month</div><div class="kpi-ch">↑ ₹3K vs last month</div></div>
+        <div class="kpi"><span class="kpi-n">4.8★</span><div class="kpi-l">My Rating</div><div class="kpi-ch">from 38 reviews</div></div>
+      </div>
+      <div class="tbl-box">
+        <div class="tbl-hdr"><h3>Assigned Jobs</h3><span class="badge badge-e">3 Active</span></div>
+        <table>
+          <thead><tr><th>Job</th><th>Client</th><th>Location</th><th>Distance</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Fan Installation (4 fans)</td><td>Sharma Ji</td><td>Tatibandh, Raipur</td><td>3.2 km</td>
+              <td><span class="sp sp-w">Pending</span></td>
+              <td><div class="act-btns"><button class="act-btn act-acc" onclick="toast('✅ Job accepted!')">Accept</button><button class="act-btn act-rej">Decline</button></div></td>
+            </tr>
+            <tr>
+              <td>MCB Panel Repair</td><td>Verma Office</td><td>Civil Lines, Raipur</td><td>5.8 km</td>
+              <td><span class="sp sp-p">Accepted</span></td>
+              <td><div class="act-btns"><button class="act-btn act-st" onclick="toast('🔧 Job started!')">Start</button></div></td>
+            </tr>
+            <tr>
+              <td>AC Wiring (2 units)</td><td>Gupta Residence</td><td>Devendra Nagar</td><td>7.1 km</td>
+              <td><span class="sp sp-w">Pending</span></td>
+              <td><div class="act-btns"><button class="act-btn act-acc" onclick="toast('✅ Job accepted!')">Accept</button><button class="act-btn act-rej">Decline</button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT DETAIL MODAL -->
+<div class="modal" id="projModal">
+  <div class="modal-box">
+    <div class="modal-hdr"><h3 id="mTitle">Project Detail</h3><button class="modal-cl" onclick="closeModal()">✕</button></div>
+    <div class="modal-body" id="mBody"></div>
+  </div>
+</div>
+
+<script>
+/* ═══ PAGE NAV ═══ */
+const pages=['home','about','service','projects','joinus','contact','login','cdash','edash'];
+function go(p){
+  pages.forEach(x=>{
+    const el=document.getElementById('p-'+x);
+    if(el)el.classList.toggle('on',x===p);
+  });
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.remove('on'));
+  const n=document.getElementById('n-'+p);
+  if(n)n.classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function toggleMob(){document.getElementById('mobNav').classList.toggle('open')}
+document.addEventListener('click',e=>{
+  const m=document.getElementById('mobNav');
+  if(!m.contains(e.target)&&!e.target.closest('.ham'))m.classList.remove('open');
+});
+
+/* ═══ COUNTER ═══ */
+function runCounters(){
+  document.querySelectorAll('[data-t]').forEach(el=>{
+    const t=+el.getAttribute('data-t'),step=t/55;
+    let c=0,raf;
+    function tick(){c=Math.min(c+step,t);el.textContent=Math.floor(c)+'+';if(c<t)raf=requestAnimationFrame(tick);}
+    tick();
+  });
+}
+setTimeout(runCounters,600);
+
+/* ═══ SERVICE TABS ═══ */
+function svcTab(id,btn){
+  document.querySelectorAll('.svc-pane').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.st').forEach(b=>b.classList.remove('on'));
+  document.getElementById('sp-'+id).classList.add('on');
+  btn.classList.add('on');
+}
+
+/* ═══ PROJECT FILTER ═══ */
+function filterP(cat,btn){
+  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.proj-card').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.c===cat)?'block':'none';
+  });
+}
+
+/* ═══ LOGIN ═══ */
+function lTab(type,el){
+  document.querySelectorAll('.ltab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.lform').forEach(f=>f.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('lf-'+type).classList.add('on');
+}
+function doLogin(type){
+  toast('✅ Signing in... welcome back!');
+  setTimeout(()=>go(type==='customer'?'cdash':'edash'),1000);
+}
+function logOut(){go('login');toast('👋 Logged out successfully.');}
+
+/* ═══ FAQ ═══ */
+function toggleFaq(el){
+  const open=el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!open)el.classList.add('open');
+}
+
+/* ═══ TOAST ═══ */
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3200);
+}
+window.toast=toast;
+
+/* ═══ PROJECT MODAL ═══ */
+const projData={
+  1:{t:'3BHK Complete Wiring — Tatibandh, Raipur',
+    b:`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.2rem"><span class="badge badge-w">RESIDENTIAL</span><span class="badge badge-g">COMPLETED</span><span class="badge badge-e">RAIPUR</span></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-bottom:1.5rem">
+      <div style="background:var(--bg3);border:1px solid var(--brd2);border-radius:8px;padding:0.8rem;text-align:center"><div style="font-family:var(--f3);font-size:0.65rem;color:var(--E);margin-bottom:3px">DURATION</div><div style="color:#fff;font-weight:700">10 Days</div></div>
+      <div style="background:var(--bg3);border:1px solid var(--brd2);border-radius:8px;padding:0.8rem;text-align:center"><div style="font-family:var(--f3);font-size:0.65rem;color:var(--E);margin-bottom:3px">VALUE</div><div style="color:#fff;font-weight:700">₹42,000</div></div>
+      <div style="background:var(--bg3);border:1px solid var(--brd2);border-radius:8px;padding:0.8rem;text-align:center"><div style="font-family:var(--f3);font-size:0.65rem;color:var(--E);margin-bottom:3px">POINTS</div><div style="color:#fff;font-weight:700">22 Points</div></div>
+    </div>
+    <div style="margin-bottom:1rem"><strong style="color:var(--E)">🔍 Problem:</strong><p style="color:var(--muted);font-size:0.85rem;margin-top:4px;line-height:1.6">Old house with 30-year-old wiring — frequent tripping, no earthing, overloaded circuits, risk of fire. Client wanted complete rewiring for a new 3BHK.</p></div>
+    <div style="margin-bottom:1rem"><strong style="color:var(--E)">✅ Solution:</strong><p style="color:var(--muted);font-size:0.85rem;margin-top:4px;line-height:1.6">Complete rewiring with 4mm Polycab copper wire, RCCB panel (32A main + 6 ways), 22 points total, 2 dedicated 16A AC circuits, pipe earthing as per IS 3043.</p></div>
+    <div style="background:var(--bg3);border-left:3px solid var(--E);padding:1rem;border-radius:0 8px 8px 0;font-style:italic;font-size:0.85rem;color:var(--txt)">"Excellent work by PR Wiring team. Very clean installation, proper earthing done. My family is now safe!" — Ramesh Sharma, Tatibandh</div>`},
+  2:{t:'IT Office Wiring — 3 Floors, Civil Lines Raipur',
+    b:`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.2rem"><span class="badge badge-e">COMMERCIAL</span><span class="badge badge-g">COMPLETED</span><span class="badge badge-e">RAIPUR</span></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-bottom:1.5rem">
+      <div style="background:var(--bg3);border:1px solid var(--brd2);border-radius:8px;padding:0.8rem;text-align:center"><div style="font-family:var(--f3);font-size:0.65rem;color:var(--E);margin-bottom:3px">DURATION</div><div style="color:#fff;font-weight:700">25 Days</div></div>
+      <div style="background:var(--bg3);border:1px solid var(--brd2);border-radius:8px;padding:0.8rem;text-align:center"><div style="font-family:var(--f3);font-size:0.65rem;color:var(--E);margin-bottom:3px">VALUE</div><div style="color:#fff;font-weight:700">₹1.8 Lakhs</div></div>
+      <div style="background:var(--bg3);border:1px solid var(--brd2);border-radius:8px;padding:0.8rem;text-align:center"><div style="font-family:var(--f3);font-size:0.65rem;color:var(--E);margin-bottom:3px">POINTS</div><div style="color:#fff;font-weight:700">200+</div></div>
+    </div>
+    <div style="margin-bottom:1rem"><strong style="color:var(--E)">📋 Scope:</strong><p style="color:var(--muted);font-size:0.85rem;margin-top:4px;line-height:1.6">3-floor IT office — 200+ data+power points, LT distribution panel, UPS integration for 150 workstations, CCTV wiring for 24 cameras, LED commercial lighting design.</p></div>
+    <div style="margin-bottom:1rem"><strong style="color:var(--E)">✅ Execution:</strong><p style="color:var(--muted);font-size:0.85rem;margin-top:4px;line-height:1.6">Load calculation, floor-wise DB panels, dedicated UPS circuits, structured cabling, complete CCTV wiring. Work completed ahead of schedule.</p></div>
+    <div style="background:var(--bg3);border-left:3px solid var(--E);padding:1rem;border-radius:0 8px 8px 0;font-style:italic;font-size:0.85rem;color:var(--txt)">"Professional team, very systematic approach. The wiring quality is outstanding — worth every rupee!" — Verma Enterprises, Raipur</div>`},
+  3:{t:'Rice Mill Factory — MCC Panel & Motor Wiring, Durg',
+    b:`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.2rem"><span class="badge badge-e">INDUSTRIAL</span><span class="badge badge-g">COMPLETED</span><span class="badge badge-e">DURG</span></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-bottom:1.5rem">
+      <div style="background:var(--bg3);border:1px solid var(--brd2);border-radius:8px;padding:0.8rem;text-align:center"><div style="font-family:var(--f3);font-size:0.65rem;color:var(--E);margin-bottom:3px">DURATION</div><div style="color:#fff;font-weight:700">30 Days</div></div>
+      <div style="background:var(--bg3);border:1px solid var(--brd2);border-radius:8px;padding:0.8rem;text-align:center"><div style="font-family:var(--f3);font-size:0.65rem;color:var(--E);margin-bottom:3px">VALUE</div><div style="color:#fff;font-weight:700">₹3.5 Lakhs</div></div>
+      <div style="background:var(--bg3);border:1px solid var(--brd2);border-radius:8px;padding:0.8rem;text-align:center"><div style="font-family:var(--f3);font-size:0.65rem;color:var(--E);margin-bottom:3px">MOTORS</div><div style="color:#fff;font-weight:700">8 Motors</div></div>
+    </div>
+    <div style="margin-bottom:1rem"><strong style="color:var(--E)">🏭 Project:</strong><p style="color:var(--muted);font-size:0.85rem;margin-top:4px;line-height:1.6">Rice mill factory at Durg — MCC panel for 8 motors (15HP to 100HP), star-delta starters, busduct, cable trays, earthing mesh.</p></div>
+    <div style="margin-bottom:1rem"><strong style="color:var(--E)">✅ Execution:</strong><p style="color:var(--muted);font-size:0.85rem;margin-top:4px;line-height:1.6">Properly sized cables, star-delta starters for motors above 15HP, dedicated earthing mesh, full T&C, load test documentation provided.</p></div>
+    <div style="background:var(--bg3);border-left:3px solid var(--E);padding:1rem;border-radius:0 8px 8px 0;font-style:italic;font-size:0.85rem;color:var(--txt)">"PR Wiring did excellent industrial work. No shortcuts, proper earthing, all documentation given. Highly professional." — Factory Owner, Durg</div>`},
+  4:{t:'Villa Complex — 12 Units, Bhilai',b:`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.2rem"><span class="badge badge-w">RESIDENTIAL</span><span class="badge badge-g">COMPLETED</span><span class="badge badge-e">BHILAI</span></div><p style="color:var(--muted);line-height:1.7;font-size:0.88rem">12-villa gated community — individual DB panels for each unit, common area lighting, street lights, solar provision wiring, central earthing system. 45 days completion.</p>`},
+  5:{t:'Shopping Complex G+2 — Raipur',b:`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.2rem"><span class="badge badge-e">COMMERCIAL</span><span class="badge badge-g">COMPLETED</span><span class="badge badge-e">RAIPUR</span></div><p style="color:var(--muted);line-height:1.7;font-size:0.88rem">G+2 shopping complex — LT panel, individual shop DB boards, common area LED lighting, fire alarm wiring, CCTV for 16 cameras, DG integration with ATS panel. 60 days.</p>`},
+  6:{t:'Steel Plant — Pump House Electrification, SIDC Urla',b:`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.2rem"><span class="badge badge-e">INDUSTRIAL</span><span class="badge badge-g">COMPLETED</span><span class="badge badge-e">SIDC URLA</span></div><p style="color:var(--muted);line-height:1.7;font-size:0.88rem">6-pump house electrification — 3-phase distribution panels, cable tray layout, GI conduit, earthing mesh, motor connections, all testing & commissioning. 40 days completion.</p>`},
+};
+function openProj(id){
+  const d=projData[id];
+  if(!d)return;
+  document.getElementById('mTitle').textContent=d.t;
+  document.getElementById('mBody').innerHTML=d.b;
+  document.getElementById('projModal').classList.add('open');
+}
+function closeModal(){document.getElementById('projModal').classList.remove('open')}
+document.getElementById('projModal').addEventListener('click',e=>{if(e.target===document.getElementById('projModal'))closeModal();});
+</script>
+</body>
+</html>

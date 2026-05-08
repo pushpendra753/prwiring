@@ -9,13 +9,13 @@
 <style>
 /* ═══════════════════════════════════════════════ DESIGN TOKENS */
 :root{
-  --E:#00CFFF; --D:#0066CC; --B:#000000;
-  --bg:#020810; --bg2:#040d1b; --bg3:#071424;
+  --E:#00cefc; --D:#0066CC; --B:#000000;
+  --bg:#020810; --bg2:#050a11; --bg3:#071424;
   --card:#060f1f; --card2:#081628;
-  --brd:rgba(0,207,255,0.18); --brd2:rgba(0,207,255,0.08);
-  --txt:#ddeeff; --muted:#6b8faa; --dim:#3a5470;
-  --glow:0 0 24px rgba(0,207,255,0.35);
-  --glow2:0 0 50px rgba(0,207,255,0.18);
+  --brd:rgba(0, 208, 255, 0.082); --brd2:rgba(255, 255, 255, 0.08);
+  --txt:#ddeeff; --muted:#ffffff; --dim:#ffffff;
+  --glow:0 0 24px rgba(0, 208, 255, 0.158);
+  --glow2:0 0 50px rgba(0, 208, 255, 0.103);
   --f1:'Exo 2',sans-serif; --f2:'Orbitron',sans-serif; --f3:'JetBrains Mono',monospace;
   --r:10px; --r2:16px;
   --header:68px;
@@ -39,8 +39,8 @@ header{position:fixed;top:0;left:0;right:0;height:var(--header);z-index:9000;
   box-shadow:var(--glow);flex-shrink:0;position:relative;overflow:hidden}
 .brand-bolt::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,0.2) 50%,transparent 60%);animation:sheen 3s ease infinite}
 @keyframes sheen{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
-.brand-name{font-family:var(--f2);font-size:0.82rem;font-weight:700;color:var(--E);letter-spacing:1.5px;line-height:1}
-.brand-sub{font-family:var(--f3);font-size:0.58rem;color:var(--muted);letter-spacing:3px;margin-top:3px;display:block}
+.brand-name{font-family:var(--f2);font-size:1.5rem;font-weight:700;color:var(--E);letter-spacing:1.5px;line-height:1}
+.brand-sub{font-family:var(--f3);font-size:0.58rem;color:var(--muted);letter-spacing:1.5px;margin-top:3px;display:block}
 .nav{display:flex;align-items:center;gap:2px}
 .nav a{padding:7px 13px;font-family:var(--f1);font-weight:600;font-size:0.78rem;letter-spacing:0.8px;
   text-transform:uppercase;color:var(--muted);text-decoration:none;border-radius:6px;
@@ -88,7 +88,7 @@ header{position:fixed;top:0;left:0;right:0;height:var(--header);z-index:9000;
 .tag{font-family:var(--f3);font-size:0.68rem;letter-spacing:3px;color:var(--E);
   text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .tag::before{content:'';width:20px;height:1px;background:var(--E)}
-h1.ttl{font-family:var(--f2);font-size:clamp(1.9rem,4.5vw,3.6rem);font-weight:900;
+h1.ttl{font-family:var(--f2);font-size:clamp(1.9rem,4.5vw,3.6rem);font-weight:9000;
   color:#fff;line-height:1.05;letter-spacing:-0.5px}
 h2.ttl{font-family:var(--f2);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:700;color:#fff;line-height:1.1}
 .accent{color:var(--E)}
@@ -484,7 +484,7 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
       <img src="data:image/png;base64,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" alt="PR Wiring Logo" style="width:46px;height:46px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(0,207,255,0.6));border-radius:6px;">
       <div>
         <div class="brand-name">PR WIRING</div>
-        <span class="brand-sub">& ELECTROMECH — RAIPUR</span>
+        <span class="brand-sub">& ELECTROMECH — RAIPUR & BHILAI</span>
       </div>
     </div>
     <nav class="nav">
@@ -535,18 +535,18 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
       </svg>
     </div>
     <div class="wrap hero-content">
-      <div class="hero-live"><div class="hero-dot"></div>LICENSED ELECTRICAL ENGINEERS — RAIPUR, CG</div>
-      <h1 class="ttl">Expert <span class="accent">Electrical &</span><br>Electromechanical<br><span class="accent">Solutions</span></h1>
+      <div class="hero-live"><div class="hero-dot"></div>ELECTRICAL & MECHNICAL ENGINEERS — RAIPUR & BHILAI CG</div>
+      <h1 class="ttl">Expert <span class="accent">Electrical &</span><br>Mechanical<br><span class="accent">Solutions</span></h1>
       <p class="hero-desc">PR WIRING & ELECTROMECH — Your complete engineer-led partner for Residential, Commercial & Industrial electrical and mechanical projects. Quality guaranteed. Safety first. On time, every time.</p>
       <div class="hero-btns">
         <button class="btn btn-p" onclick="go('service')">⚡ Explore Services</button>
-        <button class="btn btn-o" onclick="go('contact')">📋 Get Free Quote</button>
+        <button class="btn btn-o" onclick="go('contact')"> Get Free Quote</button>
       </div>
       <div class="stats-bar">
-        <div class="stat"><span class="stat-n" data-t="500">0</span><span class="stat-l">TOTAL PROJECTS</span></div>
-        <div class="stat"><span class="stat-n" data-t="300">0</span><span class="stat-l">HOMES WIRED</span></div>
-        <div class="stat"><span class="stat-n" data-t="150">0</span><span class="stat-l">COMMERCIAL</span></div>
-        <div class="stat"><span class="stat-n" data-t="50">0</span><span class="stat-l">INDUSTRIAL</span></div>
+        <div class="stat"><span class="stat-n" data-t="50">0</span><span class="stat-l">TOTAL PROJECTS</span></div>
+        <div class="stat"><span class="stat-n" data-t="30">0</span><span class="stat-l">HOMES WIRED</span></div>
+        <div class="stat"><span class="stat-n" data-t="15">0</span><span class="stat-l">COMMERCIAL</span></div>
+        <div class="stat"><span class="stat-n" data-t="5">0</span><span class="stat-l">INDUSTRIAL</span></div>
       </div>
     </div>
   </section>
@@ -555,18 +555,18 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
   <div class="founder-band">
     <div class="wrap">
       <div class="founder-inner">
-        <div class="founder-avi"><div class="founder-avi-inner">👷</div></div>
+        <div class="founder-avi"><div class="founder-avi-inner"></div></div>
         <div style="flex:1">
           <div class="founder-lbl">FOUNDER & LEAD ENGINEER</div>
-          <div class="founder-nm">Pramod Rajput</div>
-          <div class="founder-rl">B.E. Electrical Engineering &nbsp;•&nbsp; 10+ Years Experience &nbsp;•&nbsp; CG Licensed Contractor</div>
+          <div class="founder-nm">Pushpendra Kumar Verma</div>
+          <div class="founder-rl">Electrical Engineer</div>
           <div class="founder-q">"PR WIRING & ELECTROMECH was built on one principle — deliver technically superior, honest electrical and mechanical work every single time. Every project, big or small, gets the same engineer-grade precision. Your building's safety carries my name — and that's my guarantee."</div>
           <div class="creds">
-            <span class="cred">📜 B.E. Electrical</span>
-            <span class="cred">✅ CG Licensed Contractor</span>
-            <span class="cred">🏆 10+ Yrs Experience</span>
-            <span class="cred">📍 Raipur, CG</span>
-            <span class="cred">500+ Projects</span>
+            <span class="cred">📜 Electrical</span>
+            <span class="cred">✅ CG Contractor</span>
+            <span class="cred">🏆 8+ Yrs Experience</span>
+            <span class="cred">📍 Raipur & Bhilai CG</span>
+            <span class="cred">50+ Projects</span>
           </div>
         </div>
       </div>
@@ -883,10 +883,10 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
       <div class="tag">Portfolio</div>
       <h1 class="ttl">Project <span class="accent">Portfolio</span></h1>
       <div class="stats-bar" style="margin:2rem 0 2.5rem">
-        <div class="stat"><span class="stat-n">500+</span><span class="stat-l">TOTAL PROJECTS</span></div>
-        <div class="stat"><span class="stat-n">300+</span><span class="stat-l">RESIDENTIAL</span></div>
-        <div class="stat"><span class="stat-n">150+</span><span class="stat-l">COMMERCIAL</span></div>
-        <div class="stat"><span class="stat-n">50+</span><span class="stat-l">INDUSTRIAL</span></div>
+        <div class="stat"><span class="stat-n">50+</span><span class="stat-l">TOTAL PROJECTS</span></div>
+        <div class="stat"><span class="stat-n">30+</span><span class="stat-l">RESIDENTIAL</span></div>
+        <div class="stat"><span class="stat-n">15+</span><span class="stat-l">COMMERCIAL</span></div>
+        <div class="stat"><span class="stat-n">5+</span><span class="stat-l">INDUSTRIAL</span></div>
       </div>
       <div class="filter-row">
         <button class="fb on" onclick="filterP('all',this)">All</button>
@@ -1046,9 +1046,9 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
       <div class="tag">Get In Touch</div>
       <h1 class="ttl">Contact <span class="accent">PR WIRING</span></h1>
       <div class="ci-g" style="margin-top:2rem">
-        <div class="ci"><div class="ci-ico">📞</div><div class="ci-lbl">Call Us</div><div class="ci-val"><a href="tel:7354283083" style="color:#fff;text-decoration:none">73-5428-3083</a></div><div class="ci-sub">Mon–Sat, 8 AM – 8 PM</div></div>
-        <div class="ci"><div class="ci-ico">💬</div><div class="ci-lbl">WhatsApp</div><div class="ci-val"><a href="https://wa.me/917354283083" target="_blank" style="color:#fff;text-decoration:none">7354283083</a></div><div class="ci-sub">Quick response guaranteed</div></div>
-        <div class="ci"><div class="ci-ico">📍</div><div class="ci-lbl">Location</div><div class="ci-val">Raipur, CG</div><div class="ci-sub">Serving 50km radius</div></div>
+        <div class="ci"><div class="ci-ico">📞</div><div class="ci-lbl">Call Us</div><div class="ci-val"><a href="tel:+917354283083" style="color:#fff;text-decoration:none"></a></div><div class="ci-sub">Mon–Sat, 8 AM – 8 PM</div></div>
+        <div class="ci"><div class="ci-ico">💬</div><div class="ci-lbl">WhatsApp</div><div class="ci-val"><a href="https://wa.me/917354283083" target="_blank" style="color:#fff;text-decoration:none"></a></div><div class="ci-sub">Quick response guaranteed</div></div>
+        <div class="ci"><div class="ci-ico">📍</div><div class="ci-lbl">Location</div><div class="ci-val">Raipur & Bhilai CG</div><div class="ci-sub">Serving 50km radius</div></div>
         <div class="ci"><div class="ci-ico">⏰</div><div class="ci-lbl">Working Hours</div><div class="ci-val">Mon – Sat</div><div class="ci-sub">8 AM–8 PM | Emergency 24/7</div></div>
       </div>
 

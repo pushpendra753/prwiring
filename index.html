@@ -1446,26 +1446,30 @@ document.getElementById('projModal').addEventListener('click',e=>{if(e.target===
 
   // 2. LOGIN LOGIC (Customer & Employee)
   window.doLogin = async (type) => {
-    let userIdentifier, password, fakeEmail;
+  let userIdentifier, password, fakeEmail;
+  
+  if(type === 'customer') {
+    userIdentifier = document.getElementById('cust-mobile').value; // Yahan ID sahi honi chahiye
+    password = document.getElementById('cust-pass').value;
     
-    if(type === 'customer') {
-      userIdentifier = document.getElementById('cust-mobile').value;
-      password = document.getElementById('cust-pass').value;
-      fakeEmail = userIdentifier + "@customer.com"; // Firebase ko email chahiye hota hai
-    } else {
-      userIdentifier = document.getElementById('emp-id').value;
-      password = document.getElementById('emp-pass').value;
-      fakeEmail = userIdentifier + "@employee.com";
-    }
+    if(!userIdentifier) { alert("Mobile number daalein"); return; }
+    fakeEmail = userIdentifier + "@customer.com"; 
+  } else {
+    userIdentifier = document.getElementById('emp-id').value;
+    password = document.getElementById('emp-pass').value;
 
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, fakeEmail, password);
-      alert(type.toUpperCase() + " Login Successful!");
-      // Dashboard par bhejne ke liye:
-      go(type === 'customer' ? 'cdash' : 'edash');
-    } catch (error) {
-      alert("Login failed: " + error.message);
-    }
-  };
+    if(!userIdentifier) { alert("Employee ID daalein"); return; }
+    fakeEmail = userIdentifier + "@employee.com";
+  }
+
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, fakeEmail, password);
+    alert("Login Successful!");
+    go(type === 'customer' ? 'cdash' : 'edash');
+  } catch (error) {
+    console.log("Full Error:", error); // Console mein check karein ki fakeEmail kya ban raha hai
+    alert("Login failed: " + error.message);
+  }
+};
 </script>
 </html>

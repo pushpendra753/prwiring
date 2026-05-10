@@ -1165,14 +1165,14 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
         <div class="ltab" onclick="lTab('emp',this)">👷 Employee</div>
       </div>
       <div class="lform on" id="lf-cust">
-        <div class="fg"><label>Mobile Number</label><input type="tel" placeholder="Registered mobile"></div>
-        <div class="fg" style="margin-bottom:1.5rem"><label>Password / OTP</label><input type="password" placeholder="Enter password or OTP"></div>
+        <div class="fg"><label>Mobile Number</label><input type="tel" id="cust-mobile" placeholder="Registered mobile"></div>
+        <div class="fg" style="margin-bottom:1.5rem"><label>Password</label><input type="password" id="cust-pass" placeholder="Enter password"></div>
         <button class="btn btn-p" style="width:100%;justify-content:center;margin-bottom:1rem" onclick="doLogin('customer')">Sign In as Customer →</button>
         <div style="text-align:center;font-size:0.8rem;color:var(--muted)">No account? <a onclick="go('contact')" style="color:var(--E);cursor:pointer">Register via WhatsApp</a></div>
       </div>
       <div class="lform" id="lf-emp">
-        <div class="fg"><label>Employee ID</label><input type="text" placeholder="Your employee ID (e.g. PR-E-021)"></div>
-        <div class="fg" style="margin-bottom:1.5rem"><label>Password</label><input type="password" placeholder="Enter your password"></div>
+        <div class="fg"><label>Employee ID</label><input type="text" id="emp-id" placeholder="Your employee ID" (e.g. PR-E-021)"></div>
+        <div class="fg" style="margin-bottom:1.5rem"><label>Password</label><input type="password" id="emp-pass" placeholder="Enter your password"></div>
         <button class="btn btn-p" style="width:100%;justify-content:center;margin-bottom:1rem" onclick="doLogin('employee')">Sign In as Employee →</button>
         <div style="text-align:center;font-size:0.8rem;color:var(--muted)">New employee? <a onclick="go('joinus')" style="color:var(--E);cursor:pointer">Apply here</a></div>
       </div>
@@ -1399,4 +1399,73 @@ function closeModal(){document.getElementById('projModal').classList.remove('ope
 document.getElementById('projModal').addEventListener('click',e=>{if(e.target===document.getElementById('projModal'))closeModal();});
 </script>
 </body>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  // Aapka Firebase Config
+  const firebaseConfig = {
+    apiKey: "AIzaSyAVF8tgUgdjIbKwB9D-Sw5yNeAoW_XJFeQ",
+    authDomain: "prwiring-fa2ec.firebaseapp.com",
+    databaseURL: "https://prwiring-fa2ec-default-rtdb.firebaseio.com",
+    projectId: "prwiring-fa2ec",
+    storageBucket: "prwiring-fa2ec.firebasestorage.app",
+    messagingSenderId: "552416183850",
+    appId: "1:552416183850:web:78c7b01d9ed2793aa76553",
+    measurementId: "G-YM1EJ1LWTD"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // 1. JOIN US DATA STORAGE
+  const joinBtn = document.getElementById('join-submit-btn');
+  if(joinBtn) {
+    joinBtn.addEventListener('click', async () => {
+      const data = {
+        name: document.getElementById('join-name').value,
+        mobile: document.getElementById('join-mobile').value,
+        skill: document.getElementById('join-skill').value,
+        experience: document.getElementById('join-exp').value,
+        location: document.getElementById('join-loc').value,
+        submittedAt: serverTimestamp()
+      };
+
+      try {
+        await addDoc(collection(db, "applications"), data);
+        alert("Application successfully submit ho gayi hai!");
+      } catch (e) {
+        console.error("Error: ", e);
+        alert("Kuch galti hui, phir se koshish karein.");
+      }
+    });
+  }
+
+  // 2. LOGIN LOGIC (Customer & Employee)
+  window.doLogin = async (type) => {
+    let userIdentifier, password, fakeEmail;
+    
+    if(type === 'customer') {
+      userIdentifier = document.getElementById('cust-mobile').value;
+      password = document.getElementById('cust-pass').value;
+      fakeEmail = userIdentifier + "@customer.com"; // Firebase ko email chahiye hota hai
+    } else {
+      userIdentifier = document.getElementById('emp-id').value;
+      password = document.getElementById('emp-pass').value;
+      fakeEmail = userIdentifier + "@employee.com";
+    }
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, fakeEmail, password);
+      alert(type.toUpperCase() + " Login Successful!");
+      // Dashboard par bhejne ke liye:
+      go(type === 'customer' ? 'cdash' : 'edash');
+    } catch (error) {
+      alert("Login failed: " + error.message);
+    }
+  };
+</script>
 </html>

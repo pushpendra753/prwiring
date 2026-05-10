@@ -1188,30 +1188,28 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
       <div class="dash-nav">
         <a class="on">📊 Dashboard</a>
         <a>📋 My Services</a>
-        <a>🔄 In Progress</a>
-        <a>✅ Completed</a>
-        <a>💰 Bills & Payments</a>
-        <a onclick="go('contact')">➕ New Request</a>
-        <a onclick="logOut()" style="margin-top:auto;color:#ff4444">🚪 Logout</a>
+        <a onclick="logOut()" style="margin-top:auto;color:#ff4444;cursor:pointer">🚪 Logout</a>
       </div>
     </div>
     <div class="dash-main">
-      <div class="dash-hdr"><h2>Welcome back, Ramesh Kumar 👋</h2><p>Customer since 2022 &nbsp;•&nbsp; Tatibandh, Raipur &nbsp;•&nbsp; Last service: 15 Apr 2025</p></div>
-      <div class="kpi-g">
-        <div class="kpi"><span class="kpi-n">8</span><div class="kpi-l">Total Services</div><div class="kpi-ch">↑ 2 this year</div></div>
-        <div class="kpi"><span class="kpi-n">1</span><div class="kpi-l">In Progress</div><div class="kpi-ch">Expected May 10</div></div>
-        <div class="kpi"><span class="kpi-n">7</span><div class="kpi-l">Completed</div><div class="kpi-ch">All verified ✓</div></div>
-        <div class="kpi"><span class="kpi-n">₹0</span><div class="kpi-l">Pending Bill</div><div class="kpi-ch" style="color:#00d264">All paid ✓</div></div>
+      <div class="dash-hdr">
+        <h2 id="cust-welcome">Welcome back...</h2>
+        <p><span id="cust-since">Member</span> &nbsp;•&nbsp; <span id="cust-loc">Location</span> &nbsp;•&nbsp; Last service: <span id="cust-last">---</span></p>
       </div>
+      
+      <div class="kpi-g">
+        <div class="kpi"><span class="kpi-n" id="kpi-total">0</span><div class="kpi-l">Total Services</div></div>
+        <div class="kpi"><span class="kpi-n" id="kpi-progress">0</span><div class="kpi-l">In Progress</div></div>
+        <div class="kpi"><span class="kpi-n" id="kpi-done">0</span><div class="kpi-l">Completed</div></div>
+        <div class="kpi"><span class="kpi-n" id="kpi-bill">₹0</span><div class="kpi-l">Pending Bill</div></div>
+      </div>
+
       <div class="tbl-box">
-        <div class="tbl-hdr"><h3>Service History</h3><button class="btn btn-p" style="padding:8px 16px;font-size:0.75rem" onclick="go('contact')">+ New Service Request</button></div>
+        <div class="tbl-hdr"><h3>Service History</h3></div>
         <table>
-          <thead><tr><th>Service</th><th>Date</th><th>Location</th><th>Amount</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td>3BHK Complete Wiring</td><td>Jan 2024</td><td>Tatibandh, Raipur</td><td>₹42,000</td><td><span class="sp sp-d">Completed</span></td></tr>
-            <tr><td>MCB Panel Replacement</td><td>Mar 2024</td><td>Tatibandh, Raipur</td><td>₹8,500</td><td><span class="sp sp-d">Completed</span></td></tr>
-            <tr><td>AC Point Addition (2 units)</td><td>Jun 2024</td><td>Tatibandh, Raipur</td><td>₹3,200</td><td><span class="sp sp-d">Completed</span></td></tr>
-            <tr><td>Annual AMC — 2025</td><td>Jan 2025</td><td>Tatibandh, Raipur</td><td>₹4,800</td><td><span class="sp sp-p">In Progress</span></td></tr>
+          <thead><tr><th>Service</th><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody id="service-history-body">
+            <tr><td colspan="4" style="text-align:center">Loading history...</td></tr>
           </tbody>
         </table>
       </div>
@@ -1400,10 +1398,10 @@ document.getElementById('projModal').addEventListener('click',e=>{if(e.target===
 </script>
 </body>
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
+  // index (1).html mein line 718 ke aas-paas
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, collection, addDoc, serverTimestamp, getDoc, doc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
   // Aapka Firebase Config
   const firebaseConfig = {
     apiKey: "AIzaSyAVF8tgUgdjIbKwB9D-Sw5yNeAoW_XJFeQ",
@@ -1465,10 +1463,15 @@ document.getElementById('projModal').addEventListener('click',e=>{if(e.target===
   try {
     const userCredential = await signInWithEmailAndPassword(auth, fakeEmail, password);
     alert("Login Successful!");
-    go(type === 'customer' ? 'cdash' : 'edash');
-  } catch (error) {
-    console.log("Full Error:", error); // Console mein check karein ki fakeEmail kya ban raha hai
-    alert("Login failed: " + error.message);
+    go('p-cdash'); // Customer dashboard page ID
+      } else {
+          // Employee dashboard load karne ka function yahan aayega
+          go('edash');
+      }
+      // --- NAYA LOGIC KHATAM ---
+
+    } catch (error) {
+      alert("Login failed: " + error.message);
   }
 };
 </script>

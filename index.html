@@ -1019,26 +1019,21 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
       <div class="form-box" style="max-width:680px">
         <div class="frow">
           <div class="fg half"><label>Full Name *</label><input type="text" id="join-name" placeholder="Aapka poora naam"></div>
-
-<select id="join-skill">...</select>
-<select id="join-exp">...</select>
-<input type="text" id="join-loc" placeholder="City / Area">
-<button type="button" id="join-submit-btn" class="btn btn-p">📤 Send Message</button><input type="text" placeholder="Aapka poora naam"></div>
           <div class="fg half"><label>Mobile Number *</label><input type="tel" id="join-mobile" placeholder="10-digit number"></div>
         </div>
         <div class="frow">
           <div class="fg half"><label>Primary Skill *</label>
-            <select><option>Residential Electrician</option><option>Industrial Electrician</option><option>Commercial Electrician</option><option>Mechanical Fitter</option><option>Helper</option></select></div>
+            <select id="join-skill"><option>Residential Electrician</option><option>Industrial Electrician</option><option>Commercial Electrician</option><option>Mechanical Fitter</option><option>Helper</option></select></div>
           <div class="fg half"><label>Experience</label>
-            <select><option>Fresher (ITI)</option><option>1–2 Years</option><option>3–5 Years</option><option>5+ Years</option></select></div>
+            <select id="join-exp"><option>Fresher (ITI)</option><option>1–2 Years</option><option>3–5 Years</option><option>5+ Years</option></select></div>
         </div>
         <div class="frow">
-          <div class="fg half"><label>Your Location</label><input type="text" placeholder="City / Area (e.g. Bhilai, Durg)"></div>
+          <div class="fg half"><label>Your Location</label><input type="text" id="join-loc" placeholder="City / Area"></div>
           <div class="fg half"><label>Availability</label>
             <select><option>Immediately</option><option>Within 1 Week</option><option>Within 1 Month</option></select></div>
         </div>
         <div class="fg"><label>Additional Info</label><textarea placeholder="Certificates held, past work experience, anything relevant..."></textarea></div>
-        <button class="btn btn-p" onclick="toast('✅ Application submitted! We will contact you within 24 hours.')">📤 Submit Application</button>
+        <<button type="button" id="join-submit-btn" class="btn btn-p" onclick="toast('✅ Application submitted! We will contact you within 24 hours.')">📤 Submit Application</button>
       </div>
     </div>
   </section>

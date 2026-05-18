@@ -1153,34 +1153,39 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
       <div class="divhr"></div>
       <div class="tag">Apply</div>
       <h2 class="ttl" style="font-size:1.7rem;margin-bottom:1.5rem">Submit <span class="accent">Your Application</span></h2>
+      <form action="https://formspree.io/f/xykvzgzj" method="POST" target="_blank">
       <div class="form-box" style="max-width:680px">
+        <input type="hidden" name="_subject" value="New Join Us Application from Website">
         <div class="frow">
-          <div class="fg half"><label>Full Name *</label><input type="text" id="join-name" placeholder="Aapka poora naam" required></div>
-          <div class="fg half"><label>Mobile Number *</label><input type="tel" id="join-mobile" placeholder="10-digit number" maxlength="10" inputmode="numeric" pattern="[0-9]{10}" oninput="this.value=this.value.replace(/[^0-9]/g,'')" required></div>
+          <div class="fg half"><label>Full Name *</label><input type="text" id="join-name" name="name" placeholder="Aapka poora naam" required></div>
+          <div class="fg half"><label>Mobile Number *</label><input type="tel" id="join-mobile" name="mobile" placeholder="10-digit number" maxlength="10" inputmode="numeric" pattern="[0-9]{10}" oninput="this.value=this.value.replace(/[^0-9]/g,'')" required></div>
         </div>
         <div class="frow">
           <div class="fg half"><label>Primary Skill *</label>
-            <select id="join-skill" required><option value="">-- Select Skill --</option><option>Residential Electrician</option><option>Industrial Electrician</option><option>Commercial Electrician</option><option>Mechanical Fitter</option><option>Helper</option></select></div>
+            <select id="join-skill" name="skill" required><option value="">-- Select Skill --</option><option>Residential Electrician</option><option>Industrial Electrician</option><option>Commercial Electrician</option><option>Mechanical Fitter</option><option>Helper</option></select></div>
           <div class="fg half"><label>Experience</label>
-            <select id="join-exp"><option>Fresher</option><option>1–2 Years</option><option>3–5 Years</option><option>5+ Years</option></select></div>
+            <select id="join-exp" name="experience"><option>Fresher</option><option>1–2 Years</option><option>3–5 Years</option><option>5+ Years</option></select></div>
         </div>
         <div class="frow">
           <div class="fg half"><label>Qualification</label>
-            <select id="join-qual" onchange="toggleQualOther()"><option value="">-- Select Qualification --</option><option>ITI</option><option>DIPLOMA</option><option>B.TECH</option><option>M.TECH</option><option value="other">OTHER</option></select></div>
-          <div class="fg half" id="qual-other-box" style="display:none"><label>Specify Your Qualification</label><input type="text" id="join-qual-other" placeholder="Enter your qualification"></div>
+            <select id="join-qual" name="qualification" onchange="toggleQualOther()"><option value="">-- Select Qualification --</option><option>ITI</option><option>DIPLOMA</option><option>B.TECH</option><option>M.TECH</option><option value="other">OTHER</option></select></div>
+          <div class="fg half" id="qual-other-box" style="display:none"><label>Specify Your Qualification</label><input type="text" id="join-qual-other" name="qualificationOther" placeholder="Enter your qualification"></div>
         </div>
         <div class="frow">
-          <div class="fg half"><label>Your Location</label><input type="text" id="join-loc" placeholder="City / Area" required></div>
+          <div class="fg half"><label>Your Location</label><input type="text" id="join-loc" name="location" placeholder="City / Area" required></div>
           <div class="fg half"><label>Availability</label>
-            <select><option>Immediately</option><option>Within 1 Week</option><option>Within 1 Month</option></select></div>
+            <select name="availability"><option>Immediately</option><option>Within 1 Week</option><option>Within 1 Month</option></select></div>
         </div>
-        <div class="fg"><label>Additional Info</label><textarea id="join-info" placeholder="Certificates held, past work experience, anything relevant..."></textarea></div>
+        <div class="fg half"><label>Email Address *</label><input type="email" id="join-email" name="_replyto" placeholder="Email address" required></div>
+        <div class="fg"><label>Additional Info</label><textarea id="join-info" name="message" placeholder="Certificates held, past work experience, anything relevant..."></textarea></div>
         <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.5rem">
-          <button type="button" id="join-submit-btn" class="btn btn-p">📤 Submit Application</button>
+          <button type="submit" id="join-submit-btn" class="btn btn-p">📤 Submit Application</button>
           <a href="#" onclick="sendJoinWhatsApp();return false;" class="btn btn-o">💬 WhatsApp Now</a>
         </div>
       </div>
-    </div>
+    </form>
+  </div>
+</div>
   </section>
   <footer><div class="ft-main"><strong>PR WIRING & ELECTROMECH</strong> — Your Vision, Our Success &nbsp;|&nbsp; 📞 <a href="tel:7354283083" style="color:var(--E);text-decoration:none">7354283083</a> &nbsp;|&nbsp; 📍 Raipur | Bhilai</div></footer>
 </div>
@@ -1700,74 +1705,7 @@ import { getFirestore, collection, addDoc, serverTimestamp, getDoc, doc, getDocs
   const db = getFirestore(app);
 
   // 1. JOIN US DATA STORAGE
-  const joinBtn = document.getElementById('join-submit-btn');
-  if(joinBtn) {
-    joinBtn.addEventListener('click', async () => {
-      const name = document.getElementById('join-name').value.trim();
-      const mobile = document.getElementById('join-mobile').value.trim();
-      const skill = document.getElementById('join-skill').value.trim();
-      const location = document.getElementById('join-loc').value.trim();
-      
-      // Validate all required fields
-      if(!name){
-        alert('⚠️ कृपया पूरा नाम भरें | Please fill Full Name');
-        document.getElementById('join-name').focus();
-        return;
-      }
-      
-      if(!mobile){
-        alert('⚠️ कृपया मोबाइल नंबर भरें | Please fill Mobile Number');
-        document.getElementById('join-mobile').focus();
-        return;
-      }
-      
-      if(mobile.length !== 10 || !/^[0-9]{10}$/.test(mobile)){
-        alert('❌ Mobile number बिल्कुल 10 digits होना चाहिए | Mobile must be exactly 10 digits');
-        document.getElementById('join-mobile').focus();
-        return;
-      }
-      
-      if(!skill || skill === '-- Select Skill --'){
-        alert('⚠️ कृपया एक स्किल चुनें | Please select a Skill');
-        document.getElementById('join-skill').focus();
-        return;
-      }
-      
-      if(!location){
-        alert('⚠️ कृपया अपना शहर/इलाका भरें | Please fill Location');
-        document.getElementById('join-loc').focus();
-        return;
-      }
-      
-      const data = {
-        name: name,
-        mobile: mobile,
-        skill: skill,
-        experience: document.getElementById('join-exp').value,
-        qualification: document.getElementById('join-qual').value,
-        qualificationOther: document.getElementById('join-qual-other').value,
-        location: location,
-        submittedAt: serverTimestamp()
-      };
-
-      try {
-        await addDoc(collection(db, "applications"), data);
-        alert("✅ Application successfully submit ho gayi hai!");
-        document.getElementById('join-name').value = '';
-        document.getElementById('join-mobile').value = '';
-        document.getElementById('join-skill').value = '-- Select Skill --';
-        document.getElementById('join-exp').value = 'Fresher';
-        document.getElementById('join-qual').value = '';
-        document.getElementById('join-qual-other').value = '';
-        document.getElementById('qual-other-box').style.display = 'none';
-        document.getElementById('join-loc').value = '';
-        document.getElementById('join-info').value = '';
-      } catch (e) {
-        console.error("Error: ", e);
-        alert("❌ Kuch galti hui, phir se koshish karein.");
-      }
-    });
-  }
+  // Join form now submits directly to Formspree; native form validation handles required fields.
 
   // 2. LOGIN LOGIC (Customer & Employee)
   window.doLogin = async (type) => {

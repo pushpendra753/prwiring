@@ -39,11 +39,17 @@
   .nav a:hover,.nav a.on{color:var(--E);background:rgba(0,207,255,0.12);border-color:rgba(0,207,255,0.18);}
   .toast, .card, .hero-live, .stat, .svc-prev, .why-item, .tl-wrap, .team-card, .svc-item, .price-card, .proj-card, .rev-top, .rev-card, .map-wrap, .pos-card, .ben, .ci, .dash-side, .dash-nav a, .tbl-box, .modal-box, .form-box {background:var(--card);border-color:var(--brd2);}
   footer{background:var(--bg2);border-top-color:var(--brd2);}
-  .ft-main, .ft-links a, .tag, h1.ttl, h2.ttl, .hero-desc, .sub, .founder-q, .why-item h4, .tl-ttl, .team-nm, .svc-item h4, .pc-range, .proj-ttl, .rev-num, .rev-name, .map-hdr h3, .pos-ttl, .step-ttl, .ben h4, .faq-q, .dash-hdr h2, .tbl-hdr h3, .modal-hdr h3 {color:#0f172a;}
+  .ft-main, .ft-links a, h1.ttl, h2.ttl, .hero-desc, .sub, .founder-q, .founder-nm, .svc-prev h3, .why-item h4, .tl-ttl, .team-nm, .svc-item h4, .pc-range, .proj-ttl, .rev-num, .rev-name, .map-hdr h3, .pos-ttl, .step-ttl, .ben h4, .faq-q, .dash-hdr h2, .tbl-hdr h3, .modal-hdr h3, .ci-val, .ci-val a {color:var(--txt);}
   .tag{color:var(--E);}
   .team-av, .rev-av {color:#000;}
   input, select, textarea{background:rgba(15,23,42,0.04);color:var(--txt);border-color:var(--brd2);}
   .ft-links a:hover{color:var(--E);}
+  [style*="color:#fff"],
+  [style*="color: #fff"],
+  [style*="color:#ffffff"],
+  [style*="color: #ffffff"] {
+    color: var(--txt) !important;
+  }
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}

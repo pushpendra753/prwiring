@@ -46,9 +46,8 @@ header{position:fixed;top:0;left:0;right:0;height:var(--header);z-index:9000;
   text-transform:uppercase;color:var(--muted);text-decoration:none;border-radius:6px;
   border:1px solid transparent;transition:all 0.22s;cursor:pointer}
 .nav a:hover,.nav a.on{color:var(--E);background:rgba(0,207,255,0.07);border-color:rgba(0,207,255,0.15)}
-.nav .nav-login{background:linear-gradient(135deg,#0055aa,#00CFFF);color:#000!important;
-  font-weight:700;border-color:transparent!important;margin-left:6px}
-.nav .nav-login:hover{opacity:0.9;transform:translateY(-1px)}
+.nav .nav-partner{background:#ff6b35;color:#fff!important;font-weight:700;margin-left:6px;border-color:transparent!important}
+.nav .nav-partner:hover{opacity:0.9;transform:translateY(-1px)}
 .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:1px solid var(--brd);border-radius:6px}
 .ham span{width:22px;height:1.5px;background:var(--E);border-radius:2px;transition:0.3s}
 .mob-nav{display:none;position:fixed;top:var(--header);left:0;right:0;background:rgba(2,8,16,0.99);
@@ -108,6 +107,62 @@ header{position:fixed;top:0;left:0;right:0;height:var(--header);z-index:9000;
 @keyframes callp {
   0% { opacity: 0.9; transform: scale(1); }
   100% { opacity: 0; transform: scale(1.7); }
+}
+
+/* PR PARTNER APP DOWNLOAD BUTTON */
+.app-download-btn {
+  position: fixed;
+  bottom: 162px; /* Upar call button ke */
+  right: 28px;
+  z-index: 9997;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: none;
+  transition: transform 0.2s;
+}
+
+.app-download-btn:hover {
+  transform: scale(1.1);
+}
+
+.app-download-btn img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.app-download-pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #ff6b35;
+  animation: appp 2s ease-out infinite;
+}
+
+@keyframes appp {
+  0% { opacity: 0.9; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.7); }
+}
+
+.app-download-label {
+  position: fixed;
+  bottom: 230px;
+  right: 18px;
+  z-index: 9997;
+  font-family: var(--f2);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #ff6b35;
+  letter-spacing: 1px;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 /* TOAST */
@@ -401,19 +456,6 @@ textarea{resize:vertical;min-height:90px}
 .area{padding:5px 13px;background:var(--card);border:1px solid var(--brd2);
   border-radius:20px;font-size:0.78rem;color:var(--txt)}
 
-/* ═══════════════════ LOGIN */
-.login-wrap{min-height:calc(100vh - var(--header));display:flex;align-items:center;
-  justify-content:center;padding:2rem;
-  background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(0,80,200,0.06) 0%,transparent 70%)}
-.login-box{background:var(--card);border:1px solid var(--brd);border-radius:var(--r2);
-  padding:2.5rem;width:100%;max-width:440px;box-shadow:var(--glow2)}
-.ltabs{display:flex;border:1px solid var(--brd2);border-radius:8px;overflow:hidden;margin-bottom:2rem}
-.ltab{flex:1;padding:11px;text-align:center;cursor:pointer;font-family:var(--f1);
-  font-weight:700;letter-spacing:0.5px;text-transform:uppercase;font-size:0.82rem;
-  transition:0.2s;color:var(--muted)}
-.ltab.on{background:rgba(0,207,255,0.1);color:var(--E)}
-.lform{display:none}.lform.on{display:block}
-
 /* ═══════════════════ DASHBOARD */
 .dash-wrap{min-height:calc(100vh - var(--header));display:grid;grid-template-columns:240px 1fr}
 .dash-side{background:var(--bg2);border-right:1px solid var(--brd2);padding:1.5rem 0;
@@ -509,6 +551,13 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
 </head>
 <body>
 
+<!-- PR PARTNER APP DOWNLOAD -->
+<a href="https://drive.google.com/file/d/1mgedqsurFxE0Xyyzqfod-yeLpQv9r1Jh/view?usp=drivesdk" class="app-download-btn" target="_blank" aria-label="PR Partner App Download" title="Download PR Partner App">
+  <div class="app-download-pulse"></div>
+  <img src="file:///C:/Users/pushp/OneDrive/Desktop/logo2.png" alt="PR Partner App Logo">
+</a>
+<div class="app-download-label">PR PARTNER</div>
+
 <!-- WHATSAPP -->
 <a href="https://wa.me/917354283083?text=Hi%20PR%20Wiring%2C%20I%20need%20electrical%20services" class="wa" target="_blank" aria-label="WhatsApp">
   <div class="wa-pulse"></div>
@@ -542,6 +591,7 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
       <a onclick="go('projects')" id="n-projects">Projects</a>
       <a onclick="go('joinus')" id="n-joinus">Join Us</a>
       <a onclick="go('contact')" id="n-contact">Contact</a>
+      <a href="https://app.prwiring.in" class="nav-partner" target="_blank" rel="noopener">Partner Log In</a>
     </nav>
     <div class="ham" onclick="toggleMob()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -555,6 +605,7 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
   <a onclick="go('projects');toggleMob()">Projects</a>
   <a onclick="go('joinus');toggleMob()">Join Us</a>
   <a onclick="go('contact');toggleMob()">Contact</a>
+  <a href="https://app.prwiring.in" target="_blank" rel="noopener" onclick="toggleMob()">Partner Log In</a>
 </div>
 
 <!-- ════════════════════════════════════════════ HOME ════════ -->
@@ -582,7 +633,7 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
     </div>
     <div class="wrap hero-content">
       <div class="hero-live"><div class="hero-dot"></div>ELECTRICAL & MECHNICAL ENGINEERS — RAIPUR & BHILAI CG</div>
-      <h1 class="ttl">Expert <span class="accent">Electrical &</span><br>Mechanical<br><span class="accent">Solutions</span></h1>
+      <h1 class="ttl">EXPERT <span class="accent">SOLUTIONS</span><br><span class="accent">ELECTRICAL</span> & MECHNICAL</h1>
       <p class="hero-desc">PR WIRING & ELECTROMECH — Your complete engineer-led partner for Residential, Commercial & Industrial electrical and mechanical projects. Quality guaranteed. Safety first. On time, every time.</p>
       <div class="hero-btns">
         <button class="btn btn-p" onclick="go('service')">⚡ Explore Services</button>
@@ -1103,26 +1154,26 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
           <div class="tag">Send Message</div>
           <h2 class="ttl" style="font-size:1.7rem;margin-bottom:1.5rem">Request a <span class="accent">Free Quote</span></h2>
           <div class="form-box">
-  <form action="https://formspree.io/f/xpqbqoyo" method="POST">
+  <form id="quoteForm" action="https://formspree.io/f/xpqbqoyo" method="POST">
     
     <div class="frow">
       <div class="fg half">
         <label>Full Name *</label>
-        <input type="text" name="name" placeholder="Your name" required>
+        <input id="q-name" type="text" name="name" placeholder="Your name" required>
       </div>
       <div class="fg half">
         <label>Mobile *</label>
-        <input type="tel" name="phone" placeholder="Mobile number" required>
+        <input id="q-phone" type="tel" name="phone" placeholder="Mobile number" required>
       </div>
     </div>
 
     <div class="frow">
       <div class="fg half">
         <label>Work Type</label>
-        <select name="work_type">
+        <select id="q-work-type" name="work_type">
           <option>Residential Wiring</option>
           <option>Commercial Electrical</option>
-          <option>Industrial Work</option>
+          <option selected>Industrial Work</option>
           <option>Electromechanical</option>
           <option>AMC</option>
           <option>Emergency Repair</option>
@@ -1130,8 +1181,8 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
       </div>
       <div class="fg half">
         <label>Project Size</label>
-        <select name="project_size">
-          <option>Small (1 Room / Repair)</option>
+        <select id="q-project-size" name="project_size">
+          <option selected>Small (1 Room / Repair)</option>
           <option>Medium (1–3 BHK)</option>
           <option>Large (Bungalow / Office)</option>
           <option>Industrial / Factory</option>
@@ -1142,13 +1193,13 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
     <div class="frow">
       <div class="fg half">
         <label>Site Address</label>
-        <input type="text" name="address" placeholder="Location / Colony / Area">
+        <input id="q-address" type="text" name="address" placeholder="Location / Colony / Area">
       </div>
       <div class="fg half">
         <label>Preferred Time</label>
-        <select name="preferred_time">
+        <select id="q-preferred-time" name="preferred_time">
           <option>Morning (8–12)</option>
-          <option>Afternoon (12–4)</option>
+          <option selected>Afternoon (12–4)</option>
           <option>Evening (4–8)</option>
           <option>Anytime</option>
         </select>
@@ -1157,13 +1208,14 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
 
     <div class="fg">
       <label>Details / Message</label>
-      <textarea name="message" placeholder="Describe your requirement in detail..."></textarea>
+      <textarea id="q-message" name="message" placeholder="Describe your requirement in detail..."></textarea>
     </div>
 
     <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.5rem">
       <button type="submit" class="btn btn-p">📤 Send Message</button>
-              <a href="https://wa.me/917354283083?text=Hi%20PR%20Wiring%2C%20I%20need%20a%20quote%20for%20electrical%20work" target="_blank" class="btn btn-o">💬 WhatsApp Now</a>
-            </div>
+      <a href="#" onclick="sendWhatsAppQuote();return false;" class="btn btn-o">💬 WhatsApp Now</a>
+    </div>
+  </form>
           </div>
         </div>
         <div>
@@ -1194,35 +1246,6 @@ footer{background:var(--bg2);border-top:1px solid var(--brd2);padding:1.5rem 2re
     </div>
   </section>
   <footer><div class="ft-main"><strong>PR WIRING & ELECTROMECH</strong> — Your Vision, Our Success &nbsp;|&nbsp; 📞 <a href="tel:7354283083" style="color:var(--E);text-decoration:none">7354283083</a> &nbsp;|&nbsp; 📍 Raipur | Bhilai</div></footer>
-</div>
-
-<!-- ════════════════════════════════════════════ LOGIN ════════ -->
-<div class="page" id="p-login">
-  <div class="login-wrap">
-    <div class="login-box">
-      <div style="text-align:center;margin-bottom:1.5rem">
-        <div style="width:56px;height:56px;background:linear-gradient(135deg,#0055cc,#00CFFF);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 12px;box-shadow:var(--glow)">⚡</div>
-        <div style="font-family:var(--f2);font-size:1.2rem;font-weight:700;color:#fff">PR WIRING & ELECTROMECH</div>
-        <div style="font-size:0.78rem;color:var(--muted);margin-top:4px">Sign in to your account</div>
-      </div>
-      <div class="ltabs">
-        <div class="ltab on" onclick="lTab('cust',this)">👤 Customer</div>
-        <div class="ltab" onclick="lTab('emp',this)">👷 Employee</div>
-      </div>
-      <div class="lform on" id="lf-cust">
-        <div class="fg"><label>Mobile Number</label><input type="tel" id="cust-mobile" placeholder="Registered mobile"></div>
-        <div class="fg" style="margin-bottom:1.5rem"><label>Password</label><input type="password" id="cust-pass" placeholder="Enter password"></div>
-        <button class="btn btn-p" style="width:100%;justify-content:center;margin-bottom:1rem" onclick="doLogin('customer')">Sign In as Customer →</button>
-        <div style="text-align:center;font-size:0.8rem;color:var(--muted)">No account? <a onclick="go('contact')" style="color:var(--E);cursor:pointer">Register via WhatsApp</a></div>
-      </div>
-      <div class="lform" id="lf-emp">
-        <div class="fg"><label>Employee ID</label><input type="text" id="emp-id" placeholder="Your employee ID" (e.g. PR-E-021)"></div>
-        <div class="fg" style="margin-bottom:1.5rem"><label>Password</label><input type="password" id="emp-pass" placeholder="Enter your password"></div>
-        <button class="btn btn-p" style="width:100%;justify-content:center;margin-bottom:1rem" onclick="doLogin('employee')">Sign In as Employee →</button>
-        <div style="text-align:center;font-size:0.8rem;color:var(--muted)">New employee? <a onclick="go('joinus')" style="color:var(--E);cursor:pointer">Apply here</a></div>
-      </div>
-    </div>
-  </div>
 </div>
 
 <!-- ════════════════════════════════════════════ CUSTOMER DASH ════════ -->
@@ -1379,6 +1402,21 @@ function doLogin(type){
   setTimeout(()=>go(type==='customer'?'cdash':'edash'),1000);
 }
 function logOut(){go('login');toast('👋 Logged out successfully.');}
+
+function sendWhatsAppQuote(){
+  const form=document.getElementById('quoteForm');
+  if(!form)return;
+  const name=document.getElementById('q-name').value.trim()||'-';
+  const phone=document.getElementById('q-phone').value.trim()||'-';
+  const workType=document.getElementById('q-work-type').value.trim()||'-';
+  const projectSize=document.getElementById('q-project-size').value.trim()||'-';
+  const address=document.getElementById('q-address').value.trim()||'-';
+  const preferredTime=document.getElementById('q-preferred-time').value.trim()||'-';
+  const message=document.getElementById('q-message').value.trim()||'-';
+  const text=`Hi PR Wiring, I need a quote for electrical work.%0AName: ${encodeURIComponent(name)}%0AMobile: ${encodeURIComponent(phone)}%0AWork Type: ${encodeURIComponent(workType)}%0AProject Size: ${encodeURIComponent(projectSize)}%0ASite Address: ${encodeURIComponent(address)}%0APreferred Time: ${encodeURIComponent(preferredTime)}%0ADetails: ${encodeURIComponent(message)}`;
+  const url=`https://wa.me/917354283083?text=${text}`;
+  window.open(url,'_blank');
+}
 
 /* ═══ FAQ ═══ */
 function toggleFaq(el){
